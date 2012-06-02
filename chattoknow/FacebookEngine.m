@@ -96,6 +96,7 @@
         [[AppContext getContext] setEmailAddress:email];
         
         //loginWithFacebook_2
+        [[AppContext getContext] loginWithFacebook_2];
         
         /* we should now be able to login */
         requestMode = FB_MODE_NONE;

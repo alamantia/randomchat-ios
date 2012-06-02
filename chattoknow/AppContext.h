@@ -43,8 +43,8 @@
 - (void) webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 - (void) sendChat : (NSString *) senderId : (NSString *) message;
 
-
 /* external request starting point */
 - (void) loginWithFacebook;
+- (void) loginWithFacebook_2;
 
 @end
