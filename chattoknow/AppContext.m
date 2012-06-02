@@ -72,7 +72,15 @@ static AppContext *sharedMyManager = nil;
 /* the scraped information should be loaded actually try to login */
 - (void) loginWithFacebook_2
 {
-
+    NSLog(@"Performing the next step of the facebook login process");
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [wsPayload setObject:self.facebookID forKey:@"facebookID"];
+    [wsPayload setObject:self.facebookToken forKey:@"facebookToken"];
+    [wsPayload setObject:self.facebookName forKey:@"facebookName"];
+    [wsPayload setObject:self.facebookPicture forKey:@"facebookPicture"];
+    [wsPayload setObject:self.emailAddress forKey:@"emailAddress"];    
+    [_webSocket sendEvent:@"login_facebook" : wsPayload];
     return;
 }
 
