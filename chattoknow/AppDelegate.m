@@ -9,19 +9,78 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
+#import "AppContext.h"
 
 @implementation AppDelegate
+@synthesize vc;
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
+- (void) facebookSetup
+{
+    Facebook *facebook;
+    facebook = [[Facebook alloc] initWithAppId:FACEBOOK_APP_ID andDelegate:self];
+    [[AppContext getContext] setFacebook:facebook];
+    [facebook extendAccessTokenIfNeeded];
+    return;
+}
+
+- (void)fbDidLogin {
+    Facebook *facebook =  [[AppContext getContext] facebook];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    NSLog(@"We Logged in to facebook now what?");
+    [[[AppContext getContext] vc] setupFacebook];
+    return;
+}
+
+-(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
+    [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    return;
+}
+
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    Facebook *facebook =  [[AppContext getContext] facebook];
+    return [facebook handleOpenURL:url]; 
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    Facebook *facebook =  [[AppContext getContext] facebook];
+    return [facebook handleOpenURL:url]; 
+}
+
+- (void) fbSessionInvalidated
+{
+    return;
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[AppContext getContext] Setup];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    
+    navController.navigationBarHidden = NO;
+    navController.navigationBar.barStyle = UIBarStyleBlack;
+
+    self.window.rootViewController = navController;    
+    //self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [self facebookSetup];
     return YES;
 }
 

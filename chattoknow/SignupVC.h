@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SignupVC.h
 //  chattoknow
 //
 //  Created by anthony lamantia on 5/28/12.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController {
-    
-}
-- (void)   setupFacebook;
+@interface SignupVC : UIViewController
+
 @end

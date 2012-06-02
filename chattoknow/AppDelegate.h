@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+
+#import "FBConnect.h"
+
+#import "ViewController.h"
 
 @class ViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, FBSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, retain) ViewController *vc;
 @property (strong, nonatomic) ViewController *viewController;
 
 @end

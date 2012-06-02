@@ -15,22 +15,113 @@
 		CA4BA6B51574767000B25C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA6B41574767000B25C04 /* AppDelegate.m */; };
 		CA4BA6B81574767000B25C04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA6B71574767000B25C04 /* ViewController.m */; };
 		CA4BA6BB1574767100B25C04 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4BA6B91574767100B25C04 /* ViewController.xib */; };
+		CA4BA6CE1574784400B25C04 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA6CC1574784400B25C04 /* LoginVC.m */; };
+		CA4BA6CF1574784400B25C04 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4BA6CD1574784400B25C04 /* LoginVC.xib */; };
+		CA4BA6D31574785500B25C04 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA6D11574785500B25C04 /* SignupVC.m */; };
+		CA4BA6D41574785500B25C04 /* SignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4BA6D21574785500B25C04 /* SignupVC.xib */; };
+		CA4BA6D91574787700B25C04 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA6D81574787700B25C04 /* AppContext.m */; };
+		CA4BA71C1574871C00B25C04 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA4BA7191574871C00B25C04 /* SVProgressHUD.bundle */; };
+		CA4BA71D1574871C00B25C04 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA71B1574871C00B25C04 /* SVProgressHUD.m */; };
+		CA4BA72C1575CD2100B25C04 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA704157486FA00B25C04 /* libfacebook_ios_sdk.a */; };
+		CA4BA72F1575CD7400B25C04 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA7111574870A00B25C04 /* libSocketRocket.a */; };
+		CA4BA7321575CE4E00B25C04 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA7311575CE4E00B25C04 /* CFNetwork.framework */; };
+		CA4BA7341575CE5800B25C04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA7331575CE5800B25C04 /* Security.framework */; };
+		CA4BA7361575CE6B00B25C04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA7351575CE6B00B25C04 /* CoreData.framework */; };
+		CA4BA7381575CE6E00B25C04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA7371575CE6E00B25C04 /* MobileCoreServices.framework */; };
+		CA4BA73A1575CE7F00B25C04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA7391575CE7F00B25C04 /* QuartzCore.framework */; };
+		CA4BA73C1575CEAC00B25C04 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA73B1575CEAC00B25C04 /* libicucore.dylib */; };
+		CA4BA73E1575D85200B25C04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA73D1575D85200B25C04 /* CoreLocation.framework */; };
+		CA4BA75E15772B3200B25C04 /* FacebookEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA75D15772B3200B25C04 /* FacebookEngine.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA4BA703157486FA00B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA6FC157486FA00B25C04 /* facebook-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "facebook-ios-sdk";
+		};
+		CA4BA7101574870A00B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6B2082D1450F597009315AF;
+			remoteInfo = SocketRocket;
+		};
+		CA4BA7121574870A00B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F668C880153E91210044DBAC;
+			remoteInfo = SocketRocketOSX;
+		};
+		CA4BA7141574870A00B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6BDA802145900D200FE3253;
+			remoteInfo = SRWebSocketTests;
+		};
+		CA4BA7161574870A00B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F62417E314D52F3C003CE997;
+			remoteInfo = TestChat;
+		};
+		CA4BA71E1574873900B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA6FC157486FA00B25C04 /* facebook-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = "facebook-ios-sdk";
+		};
+		CA4BA7201574873F00B25C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F6B2082C1450F597009315AF;
+			remoteInfo = SocketRocket;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CA4BA6A01574767000B25C04 /* chattoknow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chattoknow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4BA6A41574767000B25C04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CA4BA6A61574767000B25C04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CA4BA6A81574767000B25C04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CA4BA6AC1574767000B25C04 /* chattoknow-Info.plist */ = {isa = PBXFileReference; path = "chattoknow-Info.plist"; sourceTree = "<group>"; };
+		CA4BA6AC1574767000B25C04 /* chattoknow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "chattoknow-Info.plist"; sourceTree = "<group>"; };
 		CA4BA6AE1574767000B25C04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA4BA6B01574767000B25C04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CA4BA6B21574767000B25C04 /* chattoknow-Prefix.pch */ = {isa = PBXFileReference; path = "chattoknow-Prefix.pch"; sourceTree = "<group>"; };
-		CA4BA6B31574767000B25C04 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		CA4BA6B21574767000B25C04 /* chattoknow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "chattoknow-Prefix.pch"; sourceTree = "<group>"; };
+		CA4BA6B31574767000B25C04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA4BA6B41574767000B25C04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CA4BA6B61574767000B25C04 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		CA4BA6B61574767000B25C04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CA4BA6B71574767000B25C04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CA4BA6BA1574767100B25C04 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		CA4BA6CB1574784400B25C04 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		CA4BA6CC1574784400B25C04 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
+		CA4BA6CD1574784400B25C04 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		CA4BA6D01574785500B25C04 /* SignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupVC.h; sourceTree = "<group>"; };
+		CA4BA6D11574785500B25C04 /* SignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupVC.m; sourceTree = "<group>"; };
+		CA4BA6D21574785500B25C04 /* SignupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupVC.xib; sourceTree = "<group>"; };
+		CA4BA6D71574787700B25C04 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
+		CA4BA6D81574787700B25C04 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		CA4BA6FC157486FA00B25C04 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SocketRocket.xcodeproj; path = SocketRocket/SocketRocket.xcodeproj; sourceTree = "<group>"; };
+		CA4BA7191574871C00B25C04 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		CA4BA71A1574871C00B25C04 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		CA4BA71B1574871C00B25C04 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		CA4BA7311575CE4E00B25C04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CA4BA7331575CE5800B25C04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CA4BA7351575CE6B00B25C04 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CA4BA7371575CE6E00B25C04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CA4BA7391575CE7F00B25C04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CA4BA73B1575CEAC00B25C04 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		CA4BA73D1575D85200B25C04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CA4BA75C15772B3200B25C04 /* FacebookEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookEngine.h; sourceTree = "<group>"; };
+		CA4BA75D15772B3200B25C04 /* FacebookEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +129,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4BA73E1575D85200B25C04 /* CoreLocation.framework in Frameworks */,
+				CA4BA73C1575CEAC00B25C04 /* libicucore.dylib in Frameworks */,
+				CA4BA73A1575CE7F00B25C04 /* QuartzCore.framework in Frameworks */,
+				CA4BA7381575CE6E00B25C04 /* MobileCoreServices.framework in Frameworks */,
+				CA4BA7361575CE6B00B25C04 /* CoreData.framework in Frameworks */,
+				CA4BA7341575CE5800B25C04 /* Security.framework in Frameworks */,
+				CA4BA7321575CE4E00B25C04 /* CFNetwork.framework in Frameworks */,
+				CA4BA72F1575CD7400B25C04 /* libSocketRocket.a in Frameworks */,
+				CA4BA72C1575CD2100B25C04 /* libfacebook_ios_sdk.a in Frameworks */,
 				CA4BA6A51574767000B25C04 /* UIKit.framework in Frameworks */,
 				CA4BA6A71574767000B25C04 /* Foundation.framework in Frameworks */,
 				CA4BA6A91574767000B25C04 /* CoreGraphics.framework in Frameworks */,
@@ -50,6 +150,15 @@
 		CA4BA6951574766E00B25C04 = {
 			isa = PBXGroup;
 			children = (
+				CA4BA73D1575D85200B25C04 /* CoreLocation.framework */,
+				CA4BA73B1575CEAC00B25C04 /* libicucore.dylib */,
+				CA4BA7391575CE7F00B25C04 /* QuartzCore.framework */,
+				CA4BA7371575CE6E00B25C04 /* MobileCoreServices.framework */,
+				CA4BA7351575CE6B00B25C04 /* CoreData.framework */,
+				CA4BA7331575CE5800B25C04 /* Security.framework */,
+				CA4BA7311575CE4E00B25C04 /* CFNetwork.framework */,
+				CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */,
+				CA4BA6FC157486FA00B25C04 /* facebook-ios-sdk.xcodeproj */,
 				CA4BA6AA1574767000B25C04 /* chattoknow */,
 				CA4BA6A31574767000B25C04 /* Frameworks */,
 				CA4BA6A11574767000B25C04 /* Products */,
@@ -77,11 +186,19 @@
 		CA4BA6AA1574767000B25C04 /* chattoknow */ = {
 			isa = PBXGroup;
 			children = (
-				CA4BA6B31574767000B25C04 /* AppDelegate.h */,
-				CA4BA6B41574767000B25C04 /* AppDelegate.m */,
+				CA4BA75B15772B2200B25C04 /* facebook */,
+				CA4BA7421575DF2D00B25C04 /* Stats */,
+				CA4BA7411575DF2600B25C04 /* Chatting */,
+				CA4BA7401575DF1F00B25C04 /* Trophy */,
+				CA4BA73F1575DF1800B25C04 /* FindingChat */,
 				CA4BA6B61574767000B25C04 /* ViewController.h */,
 				CA4BA6B71574767000B25C04 /* ViewController.m */,
 				CA4BA6B91574767100B25C04 /* ViewController.xib */,
+				CA4BA7181574871C00B25C04 /* SVProgressHUD */,
+				CA4BA6D51574785900B25C04 /* Models */,
+				CA4BA6CA1574782500B25C04 /* LoginSignup */,
+				CA4BA6B31574767000B25C04 /* AppDelegate.h */,
+				CA4BA6B41574767000B25C04 /* AppDelegate.m */,
 				CA4BA6AB1574767000B25C04 /* Supporting Files */,
 			);
 			path = chattoknow;
@@ -98,6 +215,94 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CA4BA6CA1574782500B25C04 /* LoginSignup */ = {
+			isa = PBXGroup;
+			children = (
+				CA4BA6CB1574784400B25C04 /* LoginVC.h */,
+				CA4BA6CC1574784400B25C04 /* LoginVC.m */,
+				CA4BA6CD1574784400B25C04 /* LoginVC.xib */,
+				CA4BA6D01574785500B25C04 /* SignupVC.h */,
+				CA4BA6D11574785500B25C04 /* SignupVC.m */,
+				CA4BA6D21574785500B25C04 /* SignupVC.xib */,
+			);
+			name = LoginSignup;
+			sourceTree = "<group>";
+		};
+		CA4BA6D51574785900B25C04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA4BA6D71574787700B25C04 /* AppContext.h */,
+				CA4BA6D81574787700B25C04 /* AppContext.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CA4BA6FD157486FA00B25C04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA4BA704157486FA00B25C04 /* libfacebook_ios_sdk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA4BA7061574870900B25C04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA4BA7111574870A00B25C04 /* libSocketRocket.a */,
+				CA4BA7131574870A00B25C04 /* SocketRocket.framework */,
+				CA4BA7151574870A00B25C04 /* SRWebSocketTests.octest */,
+				CA4BA7171574870A00B25C04 /* TestChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA4BA7181574871C00B25C04 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				CA4BA7191574871C00B25C04 /* SVProgressHUD.bundle */,
+				CA4BA71A1574871C00B25C04 /* SVProgressHUD.h */,
+				CA4BA71B1574871C00B25C04 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		CA4BA73F1575DF1800B25C04 /* FindingChat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FindingChat;
+			sourceTree = "<group>";
+		};
+		CA4BA7401575DF1F00B25C04 /* Trophy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Trophy;
+			sourceTree = "<group>";
+		};
+		CA4BA7411575DF2600B25C04 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Chatting;
+			sourceTree = "<group>";
+		};
+		CA4BA7421575DF2D00B25C04 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Stats;
+			sourceTree = "<group>";
+		};
+		CA4BA75B15772B2200B25C04 /* facebook */ = {
+			isa = PBXGroup;
+			children = (
+				CA4BA75C15772B3200B25C04 /* FacebookEngine.h */,
+				CA4BA75D15772B3200B25C04 /* FacebookEngine.m */,
+			);
+			name = facebook;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,6 +317,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				CA4BA7211574873F00B25C04 /* PBXTargetDependency */,
+				CA4BA71F1574873900B25C04 /* PBXTargetDependency */,
 			);
 			name = chattoknow;
 			productName = chattoknow;
@@ -137,12 +344,60 @@
 			mainGroup = CA4BA6951574766E00B25C04;
 			productRefGroup = CA4BA6A11574767000B25C04 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CA4BA6FD157486FA00B25C04 /* Products */;
+					ProjectRef = CA4BA6FC157486FA00B25C04 /* facebook-ios-sdk.xcodeproj */;
+				},
+				{
+					ProductGroup = CA4BA7061574870900B25C04 /* Products */;
+					ProjectRef = CA4BA7051574870900B25C04 /* SocketRocket.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CA4BA69F1574767000B25C04 /* chattoknow */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CA4BA704157486FA00B25C04 /* libfacebook_ios_sdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfacebook_ios_sdk.a;
+			remoteRef = CA4BA703157486FA00B25C04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CA4BA7111574870A00B25C04 /* libSocketRocket.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSocketRocket.a;
+			remoteRef = CA4BA7101574870A00B25C04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CA4BA7131574870A00B25C04 /* SocketRocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SocketRocket.framework;
+			remoteRef = CA4BA7121574870A00B25C04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CA4BA7151574870A00B25C04 /* SRWebSocketTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SRWebSocketTests.octest;
+			remoteRef = CA4BA7141574870A00B25C04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CA4BA7171574870A00B25C04 /* TestChat.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TestChat.app;
+			remoteRef = CA4BA7161574870A00B25C04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CA4BA69E1574767000B25C04 /* Resources */ = {
@@ -151,6 +406,9 @@
 			files = (
 				CA4BA6AF1574767000B25C04 /* InfoPlist.strings in Resources */,
 				CA4BA6BB1574767100B25C04 /* ViewController.xib in Resources */,
+				CA4BA6CF1574784400B25C04 /* LoginVC.xib in Resources */,
+				CA4BA6D41574785500B25C04 /* SignupVC.xib in Resources */,
+				CA4BA71C1574871C00B25C04 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,10 +422,28 @@
 				CA4BA6B11574767000B25C04 /* main.m in Sources */,
 				CA4BA6B51574767000B25C04 /* AppDelegate.m in Sources */,
 				CA4BA6B81574767000B25C04 /* ViewController.m in Sources */,
+				CA4BA6CE1574784400B25C04 /* LoginVC.m in Sources */,
+				CA4BA6D31574785500B25C04 /* SignupVC.m in Sources */,
+				CA4BA6D91574787700B25C04 /* AppContext.m in Sources */,
+				CA4BA71D1574871C00B25C04 /* SVProgressHUD.m in Sources */,
+				CA4BA75E15772B3200B25C04 /* FacebookEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA4BA71F1574873900B25C04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "facebook-ios-sdk";
+			targetProxy = CA4BA71E1574873900B25C04 /* PBXContainerItemProxy */;
+		};
+		CA4BA7211574873F00B25C04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SocketRocket;
+			targetProxy = CA4BA7201574873F00B25C04 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CA4BA6AD1574767000B25C04 /* InfoPlist.strings */ = {
@@ -210,6 +486,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -229,6 +506,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -239,7 +517,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "chattoknow/chattoknow-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/facebook-ios-sdk/lib/facebook-ios-sdk\"/**",
+					"\"$(SOURCE_ROOT)/SocketRocket/SocketRocket\"",
+				);
 				INFOPLIST_FILE = "chattoknow/chattoknow-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -250,7 +533,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "chattoknow/chattoknow-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/facebook-ios-sdk/lib/facebook-ios-sdk\"/**",
+					"\"$(SOURCE_ROOT)/SocketRocket/SocketRocket\"",
+				);
 				INFOPLIST_FILE = "chattoknow/chattoknow-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
