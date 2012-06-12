@@ -46,7 +46,17 @@
     return;
 }
 
-
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString *tempString = [NSString stringWithFormat:@"%@",deviceToken];
+    tempString = [tempString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    tempString = [tempString stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    tempString = [tempString stringByReplacingOccurrencesOfString:@">" withString:@""];
+    
+    NSLog(@"Device Token %@", tempString);
+    [[AppContext getContext] setApnsToken:tempString];
+}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     Facebook *facebook =  [[AppContext getContext] facebook];
@@ -64,17 +74,28 @@
     return;
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[AppContext getContext] Setup];
+    
+    //Reset badge number
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+    //Register for notifications
+    UIRemoteNotificationType allowedNotifications = UIRemoteNotificationTypeAlert
+    | UIRemoteNotificationTypeSound
+    | UIRemoteNotificationTypeBadge;
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:allowedNotifications];
+    application.applicationIconBadgeNumber = 0;
+
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     
-    navController.navigationBarHidden = NO;
+    navController.navigationBarHidden = YES;
     navController.navigationBar.barStyle = UIBarStyleBlack;
 
     self.window.rootViewController = navController;    

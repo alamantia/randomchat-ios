@@ -55,7 +55,7 @@
     requestMode = FB_MODE_CURRENT_PROFILE;
     NSLog(@"Starting current user profile scrape");
     //http://stackoverflow.com/questions/10489494/facebook-ios-sdk
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"id,name,email,picture",@"fields",nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"id,name,email,first_name, picture",@"fields",nil];
    [facebook requestWithGraphPath:@"me" andParams:params andDelegate:self];
     return;
 }
@@ -85,16 +85,18 @@
     /* usually done before the inital authentication request */
     if (requestMode == FB_MODE_CURRENT_PROFILE)
     {
-        NSString *email = [result objectForKey:@"email"];
-        NSString *name = [result objectForKey:@"name"];
-        NSString *fbID = [result objectForKey:@"id"];
-        NSString *picture = [result objectForKey:@"picture"];
-        
+        NSString *email     = [result objectForKey:@"email"];
+        NSString *name      = [result objectForKey:@"name"];
+        NSString *fbID      = [result objectForKey:@"id"];
+        NSString *picture   = [result objectForKey:@"picture"];
+        NSString *user_name = [result objectForKey:@"first_name"];
+
         [[AppContext getContext] setFacebookID:fbID];
         [[AppContext getContext] setFacebookName:name];
         [[AppContext getContext] setFacebookPicture:picture];
         [[AppContext getContext] setEmailAddress:email];
-        
+        [[AppContext getContext] setUser_name:user_name];
+
         //loginWithFacebook_2
         [[AppContext getContext] loginWithFacebook_2];
         

@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    
+    IBOutlet UIActivityIndicatorView *activity;
 }
 - (void)   setupFacebook;
+- (void)   cbFacebookLogin;
+
+- (IBAction) clickFindChat : (id) sender;
+- (void)     cbFoundChat : (NSString *) sessionID : (NSString *) partner;
+
 @end

@@ -32,6 +32,14 @@
 		CA4BA73C1575CEAC00B25C04 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA73B1575CEAC00B25C04 /* libicucore.dylib */; };
 		CA4BA73E1575D85200B25C04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA73D1575D85200B25C04 /* CoreLocation.framework */; };
 		CA4BA75E15772B3200B25C04 /* FacebookEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BA75D15772B3200B25C04 /* FacebookEngine.m */; };
+		CA643DDF15807A2F001649FD /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA643DDD15807A2F001649FD /* bg@2x.png */; };
+		CA643DE015807A2F001649FD /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CA643DDE15807A2F001649FD /* bg.png */; };
+		CA643DE415818BF6001649FD /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA643DE215818BF6001649FD /* ChatView.m */; };
+		CA643DE515818BF6001649FD /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA643DE315818BF6001649FD /* ChatView.xib */; };
+		CA643DE915818C2F001649FD /* TrophyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA643DE715818C2F001649FD /* TrophyView.m */; };
+		CA643DEA15818C2F001649FD /* TrophyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA643DE815818C2F001649FD /* TrophyView.xib */; };
+		CA643E0115819E40001649FD /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CA643E0015819E40001649FD /* ChatMessage.m */; };
+		CA643E541584935B001649FD /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA643E531584935B001649FD /* MessageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +130,18 @@
 		CA4BA73D1575D85200B25C04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CA4BA75C15772B3200B25C04 /* FacebookEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookEngine.h; sourceTree = "<group>"; };
 		CA4BA75D15772B3200B25C04 /* FacebookEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookEngine.m; sourceTree = "<group>"; };
+		CA643DDD15807A2F001649FD /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		CA643DDE15807A2F001649FD /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		CA643DE115818BF6001649FD /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
+		CA643DE215818BF6001649FD /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
+		CA643DE315818BF6001649FD /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
+		CA643DE615818C2F001649FD /* TrophyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrophyView.h; sourceTree = "<group>"; };
+		CA643DE715818C2F001649FD /* TrophyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrophyView.m; sourceTree = "<group>"; };
+		CA643DE815818C2F001649FD /* TrophyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrophyView.xib; sourceTree = "<group>"; };
+		CA643DFF15819E40001649FD /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		CA643E0015819E40001649FD /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		CA643E521584935B001649FD /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		CA643E531584935B001649FD /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +206,7 @@
 		CA4BA6AA1574767000B25C04 /* chattoknow */ = {
 			isa = PBXGroup;
 			children = (
+				CA643DDC15807A26001649FD /* assets */,
 				CA4BA75B15772B2200B25C04 /* facebook */,
 				CA4BA7421575DF2D00B25C04 /* Stats */,
 				CA4BA7411575DF2600B25C04 /* Chatting */,
@@ -276,6 +297,9 @@
 		CA4BA7401575DF1F00B25C04 /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				CA643DE615818C2F001649FD /* TrophyView.h */,
+				CA643DE715818C2F001649FD /* TrophyView.m */,
+				CA643DE815818C2F001649FD /* TrophyView.xib */,
 			);
 			name = Trophy;
 			sourceTree = "<group>";
@@ -283,6 +307,12 @@
 		CA4BA7411575DF2600B25C04 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
+				CA643E5115849344001649FD /* Cells */,
+				CA643DFE15819E32001649FD /* Models */,
+				CA643DFD15819C76001649FD /* FriendChat */,
+				CA643DE115818BF6001649FD /* ChatView.h */,
+				CA643DE215818BF6001649FD /* ChatView.m */,
+				CA643DE315818BF6001649FD /* ChatView.xib */,
 			);
 			name = Chatting;
 			sourceTree = "<group>";
@@ -301,6 +331,40 @@
 				CA4BA75D15772B3200B25C04 /* FacebookEngine.m */,
 			);
 			name = facebook;
+			sourceTree = "<group>";
+		};
+		CA643DDC15807A26001649FD /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				CA643DDD15807A2F001649FD /* bg@2x.png */,
+				CA643DDE15807A2F001649FD /* bg.png */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		CA643DFD15819C76001649FD /* FriendChat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FriendChat;
+			sourceTree = "<group>";
+		};
+		CA643DFE15819E32001649FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA643DFF15819E40001649FD /* ChatMessage.h */,
+				CA643E0015819E40001649FD /* ChatMessage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CA643E5115849344001649FD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CA643E521584935B001649FD /* MessageCell.h */,
+				CA643E531584935B001649FD /* MessageCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +473,10 @@
 				CA4BA6CF1574784400B25C04 /* LoginVC.xib in Resources */,
 				CA4BA6D41574785500B25C04 /* SignupVC.xib in Resources */,
 				CA4BA71C1574871C00B25C04 /* SVProgressHUD.bundle in Resources */,
+				CA643DDF15807A2F001649FD /* bg@2x.png in Resources */,
+				CA643DE015807A2F001649FD /* bg.png in Resources */,
+				CA643DE515818BF6001649FD /* ChatView.xib in Resources */,
+				CA643DEA15818C2F001649FD /* TrophyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +495,10 @@
 				CA4BA6D91574787700B25C04 /* AppContext.m in Sources */,
 				CA4BA71D1574871C00B25C04 /* SVProgressHUD.m in Sources */,
 				CA4BA75E15772B3200B25C04 /* FacebookEngine.m in Sources */,
+				CA643DE415818BF6001649FD /* ChatView.m in Sources */,
+				CA643DE915818C2F001649FD /* TrophyView.m in Sources */,
+				CA643E0115819E40001649FD /* ChatMessage.m in Sources */,
+				CA643E541584935B001649FD /* MessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +635,7 @@
 				CA4BA6C01574767100B25C04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

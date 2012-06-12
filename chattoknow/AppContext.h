@@ -10,6 +10,8 @@
 #import "FBConnect.h"
 #import "SRWebSocket.h"
 #import "FacebookEngine.h"
+#import "ViewController.h"
+#import "ChatView.h"
 
 #define FACEBOOK_APP_ID @"392801247428039"
 
@@ -18,8 +20,9 @@
 }
 
 + (id)        getContext;
-- (void) Setup;
+- (void)      Setup;
 
+@property (nonatomic, retain) NSMutableArray *chatSessions;
 @property (nonatomic, retain) NSString *sessionID;
 @property (nonatomic, assign) id <SRWebSocketDelegate> delegate;
 @property (nonatomic, retain) Facebook *facebook;
@@ -30,18 +33,22 @@
 @property (nonatomic, retain) FacebookEngine *facebookEngine;
 @property (nonatomic, retain) NSString *facebookPicture;
 @property (nonatomic, retain) NSString *emailAddress;
-
+@property (nonatomic, retain) NSString *user_name;
+@property (nonatomic, retain) NSString *apnsToken;
+@property (nonatomic)         int loggedIn;
+@property (nonatomic, retain) ViewController *vc;
+@property (nonatomic, retain) ChatView *chatView;
 - (void) open;
 - (void) reconnect;
 - (void) close;
 - (void) send:(id)data;
-
 
 - (void) webSocketDidOpen:(SRWebSocket *)webSocket;
 - (void) webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
 - (void) webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 - (void) webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 - (void) sendChat : (NSString *) senderId : (NSString *) message;
+- (void) sendFindChat;
 
 /* external request starting point */
 - (void) loginWithFacebook;

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AppContext.h"
 #import "SVProgressHUD.h"
+#import "ChatView.h"
 
 @interface ViewController () {
     
@@ -69,6 +70,8 @@
         return;
     }        
     /* if saved values were not found create a new user */
+    if ( [[AppContext getContext] loggedIn] == 1) 
+        return;
     [SVProgressHUD showWithStatus:@"Signing In"]; 
     NSLog(@"Token %@", [defaults objectForKey:@"FBAccessTokenKey"]);
     /* set the facebook token and attempt to login */
@@ -87,6 +90,7 @@
 {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"Chat2Know"];
+    [[AppContext getContext] setVc:self];
 	// Do any additional setup after loading the view, typically from a nib.
     return;
 }
@@ -100,6 +104,25 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (IBAction) clickFindChat : (id) sender
+{
+    [activity startAnimating];
+    [[AppContext getContext] sendFindChat];
+    return;
+}
+
+- (void) cbFoundChat : (NSString *) sessionID : (NSString *) partner
+{
+    [activity stopAnimating];
+    ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
+    [[AppContext getContext] setChatView:chatView];
+    [chatView setSessionID:sessionID];
+    [self.navigationController pushViewController:chatView animated:YES];
+    chatView.fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partner];
+
+    return;
 }
 
 @end
