@@ -10,6 +10,7 @@
 #import "AppContext.h"
 #import "SVProgressHUD.h"
 #import "ChatView.h"
+#import "Facebook.h"
 
 @interface ViewController () {
     
@@ -23,6 +24,7 @@
 - (void) cbFacebookLogin
 {
     [SVProgressHUD dismiss];
+    [[AppContext getContext] sendListSessions];
     return;
 }
 

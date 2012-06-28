@@ -20,5 +20,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) ViewController *vc;
 @property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end

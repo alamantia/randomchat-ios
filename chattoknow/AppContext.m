@@ -58,7 +58,7 @@ static AppContext *sharedMyManager = nil;
 {
     _webSocket.delegate = nil;
     [_webSocket close];
-    _webSocket = [[SRWebSocket alloc] initWithSocketIO:@"192.168.1.142:81"];
+    _webSocket = [[SRWebSocket alloc] initWithSocketIO:@"127.0.0.1:81"];
     _webSocket.delegate = self;    
     return;
 }
@@ -96,6 +96,12 @@ static AppContext *sharedMyManager = nil;
     return;
 }
 
+- (void) loginWithToken
+{
+    
+    return;
+}
+
 - (void) loginWithFacebook
 {
     [facebookEngine scrapeUserProfile];
@@ -130,6 +136,15 @@ static AppContext *sharedMyManager = nil;
     return;
 }
 
+- (void) sendListSessions
+{
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [_webSocket sendEvent:@"list_sessions" : wsPayload];
+    return;
+}
+
+
 - (void) sendFindChat 
 {
     NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
@@ -137,7 +152,6 @@ static AppContext *sharedMyManager = nil;
     [_webSocket sendEvent:@"find_chat" : wsPayload];
     return;
 }
-
 
 /* send a point with the needed sessionID */
 - (void) sendPing 
@@ -147,6 +161,35 @@ static AppContext *sharedMyManager = nil;
     [_webSocket sendEvent:@"ping" : wsPayload];
     return;
 }
+
+- (void) sendVote :(NSString *) value:  (NSString *) chatSession 
+{
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [wsPayload setObject:value forKey:@"vote"];
+    [wsPayload setObject:chatSession forKey:@"session"];
+    [_webSocket sendEvent:@"vote" : wsPayload];
+    return;
+}
+
+- (void) sendEnd : (NSString *) chatSession 
+{
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [wsPayload setObject:chatSession forKey:@"session"];
+    [_webSocket sendEvent:@"end_session" : wsPayload];
+    return;
+}
+
+- (void) voteChatSession  
+{
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [_webSocket sendEvent:@"ping" : wsPayload];
+    return;
+}
+
+
 
 /* WebSocket delegates */
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
@@ -178,6 +221,8 @@ static AppContext *sharedMyManager = nil;
 
 - (void) webSocket:(SRWebSocket *)webSocket didReceiveEvent:(id) event name:(NSString *)name
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
+
     NSLog(@"-- WebSocket socketIO event (%@)", name);
     if ([name isEqualToString:@"auth"]) {
         NSDictionary *elm = [event objectAtIndex:0];
@@ -189,23 +234,27 @@ static AppContext *sharedMyManager = nil;
         NSDictionary *elm = [event objectAtIndex:0];
         NSString *_sessionID = [elm objectForKey:@"session"];
         self.sessionID = _sessionID;
+        [defaults setObject:_sessionID forKey:@"token"];
         [self.vc cbFacebookLogin];
         self.loggedIn = 1;
+        [defaults synchronize];
         return;
     }
-    
     if ([name isEqualToString:@"chatHistory"]) {
         NSLog(@"received the history of a chat session");
     }
-
     if ([name isEqualToString:@"chat"]) {
         NSDictionary *elm = [event objectAtIndex:0];
-
         /* New chat received */
         NSString *_text = [elm objectForKey:@"text"];
         NSString *_senderName = [elm objectForKey:@"sender_name"];
         NSString *_senderId = [elm objectForKey:@"sender_id"];
         NSString *_chatSessionId = [elm objectForKey:@"chat_session"];
+        
+        NSString *_active = [elm objectForKey:@"active"];
+        NSString *_auto = [elm objectForKey:@"auto"];
+        NSDecimalNumber *_lines = [elm objectForKey:@"lines"];
+        NSDecimalNumber *_lines_max = [elm objectForKey:@"lines_max"];
         
         ChatView *cv = [[AppContext getContext] chatView];
         if ([_chatSessionId isEqualToString:cv.sessionID]) {
@@ -214,23 +263,59 @@ static AppContext *sharedMyManager = nil;
             newMessage.partnerName = _senderName;
             newMessage.partnerId = _senderId;
             newMessage.message = _text;
+            
+            int linesMax   =  [_lines_max integerValue] ;
+            int linesTotal =  [_lines integerValue];
+            int linesLeft = linesMax - linesTotal;
+        
+            NSLog(@"Current lines %@ lines_max %@", _lines, _lines_max);
+            NSLog(@"Lines left %i", linesLeft);
+            if (linesLeft <= 0) {
+                linesLeft = 0;
+                [chatView setLinesLeft:linesLeft];
+                cv.labelLines.text =  [NSString stringWithFormat:@"You can now vote!"];
+            } else {
+                [chatView setLinesLeft:linesLeft];
+                cv.labelLines.text =  [NSString stringWithFormat:@"%i lines until you can vote", linesLeft];
+            }
             [cv addMessage:newMessage];
         }
         NSLog(@"Incomming from (%@)", _senderName);
         NSLog(@"Incomming id (%@)",   _senderId);
         NSLog(@"Incomming chat (%@)", _text);
         NSLog(@"Incomming chat session (%@)", _chatSessionId);
-            
-        
     }
-
     if ([name isEqualToString:@"found_chat"]) {
         NSDictionary *elm = [event objectAtIndex:0];
         NSString *_sessionID = [elm objectForKey:@"session"];
         NSString *_partnerName = [elm objectForKey:@"partner"];
+        NSString *_linesMax = [elm objectForKey:@"lines_max"];
         [self.vc cbFoundChat:_sessionID:_partnerName];
+    }
+    
+    /* prarse a our list of active sessions */
+    if ([name isEqualToString:@"session_list"]) {
+        NSDictionary *elm = [event objectAtIndex:0];
+        
+    }
+    
+    //the session has been ended
+    if ([name isEqualToString:@"end_session"]) {
+        NSDictionary *elm = [event objectAtIndex:0];
+    }
+    
+    //there has been a vote on the current session
+    if ([name isEqualToString:@"session_vote"]) {
+        NSDictionary *elm = [event objectAtIndex:0];
     }
 
     
 }
+
+/* send updated location infromation to the server */
+- (void) updateLocation : (NSNumber *) lat : (NSNumber *) lon
+{
+    return;
+}
+
 @end

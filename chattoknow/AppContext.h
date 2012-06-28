@@ -48,7 +48,11 @@
 - (void) webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 - (void) webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 - (void) sendChat : (NSString *) senderId : (NSString *) message;
+- (void) sendEnd : (NSString *) chatSession ;
+- (void) sendVote :(NSString *) value:  (NSString *) chatSession ;
 - (void) sendFindChat;
+- (void) sendListSessions;
+- (void) updateLocation : (NSNumber *) lat : (NSNumber *) lon;
 
 /* external request starting point */
 - (void) loginWithFacebook;

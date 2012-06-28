@@ -11,6 +11,7 @@
 #import "MessageCell.h"
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "RateDialog.h"
 
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
@@ -19,7 +20,6 @@
 #define CELL_OFFSET 5
 
 @interface ChatView ()
-
 @end
 
 @implementation ChatView
@@ -33,6 +33,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT   = 162;
 @synthesize  chatArray;
 @synthesize  messageCells;
 @synthesize  fieldName = _fieldName;
+@synthesize  labelLines = _labelLines;
 
 CGFloat animatedDistance;
 
@@ -55,6 +56,7 @@ CGFloat animatedDistance;
 - (void) viewDidAppear:(BOOL)animated {
     /* make sure we are defined as the current chat view */
     [[AppContext getContext] setChatView:self];
+    buttonVote.hidden = YES;
 }
 
 - (void)viewDidUnload
@@ -312,7 +314,51 @@ CGFloat animatedDistance;
     return cell;
 }
 
+- (IBAction) clickUp :(id)sender
+{
+    NSLog(@"Vote up");
+    return;
+}
 
+- (IBAction) clickDown :(id)sender
+{
+    NSLog(@"Vote Down");
+    return;
+}
 
+- (void) setLinesLeft : (int) linesLeft
+{
+    if (linesLeft <= 0) {
+        buttonVote.hidden = NO;
+    } else {
+        buttonVote.hidden = YES;
+    }
+    return;
+}
+
+/* display the vode modal dialog */
+- (IBAction) clickVote :(id)sender
+{
+    rd = [[RateDialog alloc] initWithNibName:@"RateDialog" bundle:nil];
+    [self presentModalViewController:rd animated:YES];
+    return;
+}
+
+- (void) cbVoteFinish : (int) result
+{
+    if (result == 0) {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
+    return;
+}
+
+/* back button or end session button, i'm not 100% sure on this one */
+- (IBAction) clickEnd :(id)sender
+{
+    NSLog(@"Sending end for %@", self.sessionID);
+    [[AppContext getContext] sendEnd: self.sessionID];
+    [self.navigationController popViewControllerAnimated:YES];
+    return;
+}
 
 @end

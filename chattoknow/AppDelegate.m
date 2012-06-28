@@ -16,6 +16,7 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize locationManager;
 
 - (void) facebookSetup
 {
@@ -81,6 +82,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     //Reset badge number
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
+    //Initialize Location Manager
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager setDelegate:self];
+    [locationManager setDistanceFilter:kCLDistanceFilterNone];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [locationManager startUpdatingLocation];
+
     //Register for notifications
     UIRemoteNotificationType allowedNotifications = UIRemoteNotificationTypeAlert
     | UIRemoteNotificationTypeSound
@@ -130,6 +140,25 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+int last_time = 0;
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation { 
+
+    [[AppContext getContext] updateLocation:
+     [NSNumber numberWithFloat:newLocation.coordinate.latitude ] :
+     [NSNumber numberWithFloat:newLocation.coordinate.longitude]];
+    return;
+#if 1
+    if (time(0) - last_time > 120) {
+        return;
+    }
+#endif
+
+    
 }
 
 @end

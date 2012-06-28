@@ -40,6 +40,14 @@
 		CA643DEA15818C2F001649FD /* TrophyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA643DE815818C2F001649FD /* TrophyView.xib */; };
 		CA643E0115819E40001649FD /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CA643E0015819E40001649FD /* ChatMessage.m */; };
 		CA643E541584935B001649FD /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA643E531584935B001649FD /* MessageCell.m */; };
+		CA7533D7159973C2000BE64F /* TrophyViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7533D5159973C2000BE64F /* TrophyViewContainer.m */; };
+		CA7533D8159973C2000BE64F /* TrophyViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7533D6159973C2000BE64F /* TrophyViewContainer.xib */; };
+		CA7533DC159973E5000BE64F /* TrophyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7533DA159973E5000BE64F /* TrophyViewCell.m */; };
+		CA7533DD159973E5000BE64F /* TrophyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7533DB159973E5000BE64F /* TrophyViewCell.xib */; };
+		CAB4419C158C834F0000857F /* Thumbdown 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419A158C834F0000857F /* Thumbdown 512x512.png */; };
+		CAB4419D158C834F0000857F /* Thumbs up 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419B158C834F0000857F /* Thumbs up 512x512.png */; };
+		CAB441A1158D070F0000857F /* RateDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4419F158D070F0000857F /* RateDialog.m */; };
+		CAB441A2158D070F0000857F /* RateDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB441A0158D070F0000857F /* RateDialog.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +150,17 @@
 		CA643E0015819E40001649FD /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
 		CA643E521584935B001649FD /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		CA643E531584935B001649FD /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		CA7533D4159973C2000BE64F /* TrophyViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrophyViewContainer.h; sourceTree = "<group>"; };
+		CA7533D5159973C2000BE64F /* TrophyViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrophyViewContainer.m; sourceTree = "<group>"; };
+		CA7533D6159973C2000BE64F /* TrophyViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrophyViewContainer.xib; sourceTree = "<group>"; };
+		CA7533D9159973E5000BE64F /* TrophyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrophyViewCell.h; sourceTree = "<group>"; };
+		CA7533DA159973E5000BE64F /* TrophyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrophyViewCell.m; sourceTree = "<group>"; };
+		CA7533DB159973E5000BE64F /* TrophyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrophyViewCell.xib; sourceTree = "<group>"; };
+		CAB4419A158C834F0000857F /* Thumbdown 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbdown 512x512.png"; sourceTree = "<group>"; };
+		CAB4419B158C834F0000857F /* Thumbs up 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbs up 512x512.png"; sourceTree = "<group>"; };
+		CAB4419E158D070F0000857F /* RateDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateDialog.h; sourceTree = "<group>"; };
+		CAB4419F158D070F0000857F /* RateDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateDialog.m; sourceTree = "<group>"; };
+		CAB441A0158D070F0000857F /* RateDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateDialog.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +316,7 @@
 		CA4BA7401575DF1F00B25C04 /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				CA7533D3159973A6000BE64F /* New Group */,
 				CA643DE615818C2F001649FD /* TrophyView.h */,
 				CA643DE715818C2F001649FD /* TrophyView.m */,
 				CA643DE815818C2F001649FD /* TrophyView.xib */,
@@ -313,6 +333,9 @@
 				CA643DE115818BF6001649FD /* ChatView.h */,
 				CA643DE215818BF6001649FD /* ChatView.m */,
 				CA643DE315818BF6001649FD /* ChatView.xib */,
+				CAB4419E158D070F0000857F /* RateDialog.h */,
+				CAB4419F158D070F0000857F /* RateDialog.m */,
+				CAB441A0158D070F0000857F /* RateDialog.xib */,
 			);
 			name = Chatting;
 			sourceTree = "<group>";
@@ -336,6 +359,8 @@
 		CA643DDC15807A26001649FD /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				CAB4419A158C834F0000857F /* Thumbdown 512x512.png */,
+				CAB4419B158C834F0000857F /* Thumbs up 512x512.png */,
 				CA643DDD15807A2F001649FD /* bg@2x.png */,
 				CA643DDE15807A2F001649FD /* bg.png */,
 			);
@@ -365,6 +390,19 @@
 				CA643E531584935B001649FD /* MessageCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		CA7533D3159973A6000BE64F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				CA7533D4159973C2000BE64F /* TrophyViewContainer.h */,
+				CA7533D5159973C2000BE64F /* TrophyViewContainer.m */,
+				CA7533D6159973C2000BE64F /* TrophyViewContainer.xib */,
+				CA7533D9159973E5000BE64F /* TrophyViewCell.h */,
+				CA7533DA159973E5000BE64F /* TrophyViewCell.m */,
+				CA7533DB159973E5000BE64F /* TrophyViewCell.xib */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +515,11 @@
 				CA643DE015807A2F001649FD /* bg.png in Resources */,
 				CA643DE515818BF6001649FD /* ChatView.xib in Resources */,
 				CA643DEA15818C2F001649FD /* TrophyView.xib in Resources */,
+				CAB4419C158C834F0000857F /* Thumbdown 512x512.png in Resources */,
+				CAB4419D158C834F0000857F /* Thumbs up 512x512.png in Resources */,
+				CAB441A2158D070F0000857F /* RateDialog.xib in Resources */,
+				CA7533D8159973C2000BE64F /* TrophyViewContainer.xib in Resources */,
+				CA7533DD159973E5000BE64F /* TrophyViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +542,9 @@
 				CA643DE915818C2F001649FD /* TrophyView.m in Sources */,
 				CA643E0115819E40001649FD /* ChatMessage.m in Sources */,
 				CA643E541584935B001649FD /* MessageCell.m in Sources */,
+				CAB441A1158D070F0000857F /* RateDialog.m in Sources */,
+				CA7533D7159973C2000BE64F /* TrophyViewContainer.m in Sources */,
+				CA7533DC159973E5000BE64F /* TrophyViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
