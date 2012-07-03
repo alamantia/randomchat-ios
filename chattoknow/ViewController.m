@@ -11,6 +11,9 @@
 #import "SVProgressHUD.h"
 #import "ChatView.h"
 #import "Facebook.h"
+#import "Session.h"
+#import "ChatMessage.h"
+
 
 @interface ViewController () {
     
@@ -20,6 +23,11 @@
 
 @implementation ViewController
 
+
+- (IBAction) buttonDepressed : (id) sender
+{
+    return;
+}
 
 - (void) cbFacebookLogin
 {
@@ -43,6 +51,7 @@
                                 @"friends_relationships",
                                 @"user_status",
                                 @"email",
+                                @"picture",
                                 @"offline_access",
                                 @"user_location",
                                 @"user_interests",
@@ -57,6 +66,7 @@
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"user_likes", 
                                 @"read_stream",
+                                @"picture",
                                 @"user_relationships",
                                 @"friends_relationships",
                                 @"user_status",
@@ -85,8 +95,11 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    inSession = NO;
     [self setupFacebook];
+
 }
+
 
 - (void)viewDidLoad
 {
@@ -110,7 +123,74 @@
 
 - (IBAction) clickFindChat : (id) sender
 {
+    if (inSession == NO) {
+        return;
+    }    
+    NSMutableArray *sessions = [[AppContext getContext] activeSessions];
+    for (Session *cSession in sessions) {
+        if ([cSession.active boolValue] == YES) {
+            for (NSString *user in cSession.users) {
+                [[AppContext getContext] sessionID];
+                if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
+                    /* do we want to autolaunch a session!? */
+                    /* not totally sure */
+                    [activity stopAnimating];
+                    [self launchSession:cSession];
+                    inSession = YES;
+                    return;
+                }
+            }
+        }
+    }
+    return;
+}
+
+- (void) launchSession : (Session *) session
+{
+    ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
+    [[AppContext getContext] setChatView:chatView];
+    [chatView setSessionID:session.token];
+    [self.navigationController pushViewController:chatView animated:YES];
+    NSLog(@"Adding message");
+    for (NSDictionary *message in session.messages) {
+        NSLog(@"Message %@", message);
+        ChatMessage *cMessage = [[ChatMessage alloc] init];
+        cMessage.message = [message objectForKey:@"message"];
+        cMessage.partnerId = [message objectForKey:@"sender"];
+        [chatView addMessage:cMessage];
+    }
+    return;
+}
+
+- (void) cbSessionsLoaded 
+{
+    NSLog(@"Sessions have been loaded");
+    NSMutableArray *sessions = [[AppContext getContext] activeSessions];
+    NSLog(@"There are %i active sessions", [sessions count]);
+    for (Session *cSession in sessions) {
+        if ([cSession.active boolValue] == YES) {
+            NSLog(@"We have an active session");
+            NSLog(@"Session messages %@", cSession.messages);
+            NSLog(@"Session users %@", cSession.users);
+            for (NSString *user in cSession.users) {
+                [[AppContext getContext] sessionID];
+                if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
+                    NSLog(@"Partner is %@", user);
+                    textChatTile.text = [NSString stringWithFormat:@"Session with %@", user];
+                    /* do we want to autolaunch a session!? */
+                    /* not totally sure */
+                    [activity stopAnimating];
+                    //[self launchSession:cSession];
+                    inSession = YES;
+                    return;
+                }
+            }
+        }
+    }
+    
+    NSLog(@"We if are here, we need to find an active session");    
     [activity startAnimating];
+    textChatTile.text = @"You are currently searching for a chat partner";
     [[AppContext getContext] sendFindChat];
     return;
 }
@@ -123,7 +203,6 @@
     [chatView setSessionID:sessionID];
     [self.navigationController pushViewController:chatView animated:YES];
     chatView.fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partner];
-
     return;
 }
 

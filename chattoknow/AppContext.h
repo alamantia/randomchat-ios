@@ -14,7 +14,6 @@
 #import "ChatView.h"
 
 #define FACEBOOK_APP_ID @"392801247428039"
-
 @interface AppContext : NSObject <SRWebSocketDelegate> {
     SRWebSocket     *_webSocket;
 }
@@ -23,6 +22,7 @@
 - (void)      Setup;
 
 @property (nonatomic, retain) NSMutableArray *chatSessions;
+@property (nonatomic, retain) NSMutableArray *activeSessions;
 @property (nonatomic, retain) NSString *sessionID;
 @property (nonatomic, assign) id <SRWebSocketDelegate> delegate;
 @property (nonatomic, retain) Facebook *facebook;

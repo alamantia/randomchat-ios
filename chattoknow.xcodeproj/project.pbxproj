@@ -44,6 +44,9 @@
 		CA7533D8159973C2000BE64F /* TrophyViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7533D6159973C2000BE64F /* TrophyViewContainer.xib */; };
 		CA7533DC159973E5000BE64F /* TrophyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7533DA159973E5000BE64F /* TrophyViewCell.m */; };
 		CA7533DD159973E5000BE64F /* TrophyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7533DB159973E5000BE64F /* TrophyViewCell.xib */; };
+		CA7534B815A0EE1B000BE64F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7534B715A0EE1B000BE64F /* Session.m */; };
+		CA75350815A27399000BE64F /* TileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA75350715A27399000BE64F /* TileButton.m */; };
+		CA75351D15A27D76000BE64F /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = CA75351C15A27D76000BE64F /* UIColor-Expanded.m */; };
 		CAB4419C158C834F0000857F /* Thumbdown 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419A158C834F0000857F /* Thumbdown 512x512.png */; };
 		CAB4419D158C834F0000857F /* Thumbs up 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419B158C834F0000857F /* Thumbs up 512x512.png */; };
 		CAB441A1158D070F0000857F /* RateDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4419F158D070F0000857F /* RateDialog.m */; };
@@ -156,6 +159,12 @@
 		CA7533D9159973E5000BE64F /* TrophyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrophyViewCell.h; sourceTree = "<group>"; };
 		CA7533DA159973E5000BE64F /* TrophyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrophyViewCell.m; sourceTree = "<group>"; };
 		CA7533DB159973E5000BE64F /* TrophyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrophyViewCell.xib; sourceTree = "<group>"; };
+		CA7534B615A0EE1B000BE64F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		CA7534B715A0EE1B000BE64F /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		CA75350615A27399000BE64F /* TileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileButton.h; sourceTree = "<group>"; };
+		CA75350715A27399000BE64F /* TileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileButton.m; sourceTree = "<group>"; };
+		CA75351B15A27D76000BE64F /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		CA75351C15A27D76000BE64F /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
 		CAB4419A158C834F0000857F /* Thumbdown 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbdown 512x512.png"; sourceTree = "<group>"; };
 		CAB4419B158C834F0000857F /* Thumbs up 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbs up 512x512.png"; sourceTree = "<group>"; };
 		CAB4419E158D070F0000857F /* RateDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateDialog.h; sourceTree = "<group>"; };
@@ -225,6 +234,7 @@
 		CA4BA6AA1574767000B25C04 /* chattoknow */ = {
 			isa = PBXGroup;
 			children = (
+				CA75350515A27388000BE64F /* Subclasses */,
 				CA643DDC15807A26001649FD /* assets */,
 				CA4BA75B15772B2200B25C04 /* facebook */,
 				CA4BA7421575DF2D00B25C04 /* Stats */,
@@ -379,6 +389,8 @@
 			children = (
 				CA643DFF15819E40001649FD /* ChatMessage.h */,
 				CA643E0015819E40001649FD /* ChatMessage.m */,
+				CA7534B615A0EE1B000BE64F /* Session.h */,
+				CA7534B715A0EE1B000BE64F /* Session.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -403,6 +415,17 @@
 				CA7533DB159973E5000BE64F /* TrophyViewCell.xib */,
 			);
 			name = "New Group";
+			sourceTree = "<group>";
+		};
+		CA75350515A27388000BE64F /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				CA75350615A27399000BE64F /* TileButton.h */,
+				CA75350715A27399000BE64F /* TileButton.m */,
+				CA75351B15A27D76000BE64F /* UIColor-Expanded.h */,
+				CA75351C15A27D76000BE64F /* UIColor-Expanded.m */,
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,6 +568,9 @@
 				CAB441A1158D070F0000857F /* RateDialog.m in Sources */,
 				CA7533D7159973C2000BE64F /* TrophyViewContainer.m in Sources */,
 				CA7533DC159973E5000BE64F /* TrophyViewCell.m in Sources */,
+				CA7534B815A0EE1B000BE64F /* Session.m in Sources */,
+				CA75350815A27399000BE64F /* TileButton.m in Sources */,
+				CA75351D15A27D76000BE64F /* UIColor-Expanded.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

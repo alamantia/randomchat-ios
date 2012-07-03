@@ -9,6 +9,7 @@
 #import "AppContext.h"
 #import "ViewController.h"
 #import "ChatMessage.h"
+#import "Session.h"
 
 static AppContext *sharedMyManager = nil;
 
@@ -28,6 +29,7 @@ static AppContext *sharedMyManager = nil;
 @synthesize chatSessions;
 @synthesize loggedIn;
 @synthesize  vc;
+@synthesize  activeSessions;
 
 + (id)getContext {
     @synchronized(self) {
@@ -47,6 +49,7 @@ static AppContext *sharedMyManager = nil;
 - (void) Setup
 {
     facebookEngine = [[FacebookEngine alloc] init];
+    activeSessions = [[NSMutableArray alloc] init];
     sessionID = @"DEADBEEF";
     self.apnsToken = @"";
     loggedIn = 0;
@@ -58,7 +61,7 @@ static AppContext *sharedMyManager = nil;
 {
     _webSocket.delegate = nil;
     [_webSocket close];
-    _webSocket = [[SRWebSocket alloc] initWithSocketIO:@"127.0.0.1:81"];
+    _webSocket = [[SRWebSocket alloc] initWithSocketIO:@"player2.mobi:8080"];
     _webSocket.delegate = self;    
     return;
 }
@@ -144,7 +147,6 @@ static AppContext *sharedMyManager = nil;
     return;
 }
 
-
 - (void) sendFindChat 
 {
     NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
@@ -189,7 +191,19 @@ static AppContext *sharedMyManager = nil;
     return;
 }
 
-
+/* this should actually load the current history of the sesion as well */
+- (void) loadSessions : (NSArray *) sessionsArray
+{
+    [activeSessions removeAllObjects];
+    /* build up the active sessions list */
+    for (NSDictionary *session in sessionsArray) {
+        Session *newSession = [[Session alloc] init];
+        [newSession buildFromDict:session];
+        [activeSessions addObject:newSession];
+    }
+    [self.vc cbSessionsLoaded];
+    return;
+}
 
 /* WebSocket delegates */
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
@@ -295,8 +309,8 @@ static AppContext *sharedMyManager = nil;
     
     /* prarse a our list of active sessions */
     if ([name isEqualToString:@"session_list"]) {
-        NSDictionary *elm = [event objectAtIndex:0];
-        
+        NSArray *elm = [event objectAtIndex:0];
+        [self loadSessions:elm];
     }
     
     //the session has been ended

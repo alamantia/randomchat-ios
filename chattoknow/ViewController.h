@@ -10,11 +10,14 @@
 
 @interface ViewController : UIViewController {
     IBOutlet UIActivityIndicatorView *activity;
+    IBOutlet UITextView *textChatTile;
+    BOOL inSession;
 }
 - (void)   setupFacebook;
 - (void)   cbFacebookLogin;
 
 - (IBAction) clickFindChat : (id) sender;
 - (void)     cbFoundChat : (NSString *) sessionID : (NSString *) partner;
-
+- (void)     cbSessionsLoaded ;
+- (IBAction) buttonDepressed : (id) sender;
 @end
