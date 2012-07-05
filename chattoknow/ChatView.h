@@ -18,6 +18,7 @@
     IBOutlet UITableView *tableView;
     IBOutlet UILabel *_labelLines;
     IBOutlet UIButton *buttonVote;
+    IBOutlet UIButton *buttonExit;
     IBOutlet UIView *adView;
     RateDialog *rd;
     GADBannerView *bannerView_;

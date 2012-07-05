@@ -51,7 +51,6 @@
                                 @"friends_relationships",
                                 @"user_status",
                                 @"email",
-                                @"picture",
                                 @"offline_access",
                                 @"user_location",
                                 @"user_interests",
@@ -66,7 +65,6 @@
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"user_likes", 
                                 @"read_stream",
-                                @"picture",
                                 @"user_relationships",
                                 @"friends_relationships",
                                 @"user_status",
@@ -214,6 +212,16 @@
             NSLog(@"We have an active session");
             NSLog(@"Session messages %@", cSession.messages);
             NSLog(@"Session users %@", cSession.users);
+            /* if we have voted conintue */
+            if ([cSession.vote_1_id isEqualToString:[[AppContext getContext] sessionID]]) {
+                NSLog(@"WE were vote 1");
+                if ([cSession.vote_1 intValue] != 1)
+                    continue;
+            } else if ([cSession.vote_2_id isEqualToString:[[AppContext getContext] sessionID]]) {
+                if ([cSession.vote_1 intValue] != 1)
+                    continue;
+                continue;
+            }
             for (NSString *user in cSession.users) {
                 [[AppContext getContext] sessionID];
                 if (![user isEqualToString:[[AppContext getContext] sessionID]]) {

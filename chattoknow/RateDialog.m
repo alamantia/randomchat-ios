@@ -49,7 +49,7 @@
     ChatView *cv = [[AppContext getContext] chatView];
     [[AppContext getContext] sendVote:@"up" : cv.sessionID];
     [self dismissModalViewControllerAnimated:YES];
-    [cv cbVoteFinish:0];
+    [cv cbVoteFinish:1];
     return;
 }
 

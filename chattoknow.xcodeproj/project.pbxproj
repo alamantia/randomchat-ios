@@ -55,6 +55,11 @@
 		CA75358915A4C98E000BE64F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA75358815A4C98E000BE64F /* SystemConfiguration.framework */; };
 		CA75358B15A4CB39000BE64F /* Arrow left 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75358A15A4CB39000BE64F /* Arrow left 512x512.png */; };
 		CA75358D15A4CE27000BE64F /* Inbox 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75358C15A4CE27000BE64F /* Inbox 512x512.png */; };
+		CA75358F15A54223000BE64F /* Chat active 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75358E15A54223000BE64F /* Chat active 512x512.png */; };
+		CA75359115A54235000BE64F /* Delete 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359015A54235000BE64F /* Delete 512x512.png */; };
+		CA75359315A5424D000BE64F /* Rate 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359215A5424D000BE64F /* Rate 512x512.png */; };
+		CA75359515A54254000BE64F /* Settings 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359415A54254000BE64F /* Settings 512x512.png */; };
+		CA75359715A54285000BE64F /* Info 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359615A54285000BE64F /* Info 512x512.png */; };
 		CAB4419C158C834F0000857F /* Thumbdown 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419A158C834F0000857F /* Thumbdown 512x512.png */; };
 		CAB4419D158C834F0000857F /* Thumbs up 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419B158C834F0000857F /* Thumbs up 512x512.png */; };
 		CAB441A1158D070F0000857F /* RateDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4419F158D070F0000857F /* RateDialog.m */; };
@@ -196,6 +201,11 @@
 		CA75358815A4C98E000BE64F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CA75358A15A4CB39000BE64F /* Arrow left 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrow left 512x512.png"; sourceTree = "<group>"; };
 		CA75358C15A4CE27000BE64F /* Inbox 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Inbox 512x512.png"; sourceTree = "<group>"; };
+		CA75358E15A54223000BE64F /* Chat active 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chat active 512x512.png"; sourceTree = "<group>"; };
+		CA75359015A54235000BE64F /* Delete 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete 512x512.png"; sourceTree = "<group>"; };
+		CA75359215A5424D000BE64F /* Rate 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rate 512x512.png"; sourceTree = "<group>"; };
+		CA75359415A54254000BE64F /* Settings 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 512x512.png"; sourceTree = "<group>"; };
+		CA75359615A54285000BE64F /* Info 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info 512x512.png"; sourceTree = "<group>"; };
 		CAB4419A158C834F0000857F /* Thumbdown 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbdown 512x512.png"; sourceTree = "<group>"; };
 		CAB4419B158C834F0000857F /* Thumbs up 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbs up 512x512.png"; sourceTree = "<group>"; };
 		CAB4419E158D070F0000857F /* RateDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateDialog.h; sourceTree = "<group>"; };
@@ -408,6 +418,11 @@
 		CA643DDC15807A26001649FD /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				CA75359615A54285000BE64F /* Info 512x512.png */,
+				CA75359415A54254000BE64F /* Settings 512x512.png */,
+				CA75359215A5424D000BE64F /* Rate 512x512.png */,
+				CA75359015A54235000BE64F /* Delete 512x512.png */,
+				CA75358E15A54223000BE64F /* Chat active 512x512.png */,
 				CA75358A15A4CB39000BE64F /* Arrow left 512x512.png */,
 				CA75356D15A43BD5000BE64F /* icon.png */,
 				CAB4419A158C834F0000857F /* Thumbdown 512x512.png */,
@@ -621,6 +636,11 @@
 				CA75358515A4C94A000BE64F /* README.txt in Resources */,
 				CA75358B15A4CB39000BE64F /* Arrow left 512x512.png in Resources */,
 				CA75358D15A4CE27000BE64F /* Inbox 512x512.png in Resources */,
+				CA75358F15A54223000BE64F /* Chat active 512x512.png in Resources */,
+				CA75359115A54235000BE64F /* Delete 512x512.png in Resources */,
+				CA75359315A5424D000BE64F /* Rate 512x512.png in Resources */,
+				CA75359515A54254000BE64F /* Settings 512x512.png in Resources */,
+				CA75359715A54285000BE64F /* Info 512x512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,7 +727,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -726,7 +746,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;

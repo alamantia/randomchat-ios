@@ -40,7 +40,7 @@
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 2.0);
         CGContextAddRect(context, rect);
-        CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:@"22a9d7"].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:@"cafe54"].CGColor);
 
         CGContextFillPath(context);
     } else {
@@ -48,7 +48,7 @@
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 2.0);
         CGContextAddRect(context, rect);
-        CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:@"3d95b2"].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:@"b4e24a"].CGColor);
         CGContextFillPath(context);
     }
 

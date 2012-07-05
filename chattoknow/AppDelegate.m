@@ -36,6 +36,7 @@
     
     NSLog(@"We Logged in to facebook now what?");
     [[[AppContext getContext] vc] setupFacebook];
+    
     return;
 }
 
