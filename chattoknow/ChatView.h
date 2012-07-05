@@ -19,7 +19,8 @@
     IBOutlet UILabel *_labelLines;
     IBOutlet UIButton *_buttonVote;
     IBOutlet UIButton *_buttonExit;
-    IBOutlet UIView *adView;
+    IBOutlet UIView    *adView;
+    
     RateDialog *rd;
     GADBannerView *bannerView_;
 
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) UILabel *labelLines;
 @property (nonatomic, retain) UIButton *buttonExit;
 @property (nonatomic, retain) UIButton *buttonVote;
+@property (nonatomic, retain) NSString *partnerName;
 @property (nonatomic) BOOL hasVoted;
 @property (nonatomic, retain) NSMutableArray *chatArray;
 @property (nonatomic, retain) NSMutableArray *messageCells;

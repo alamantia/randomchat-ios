@@ -293,8 +293,12 @@ static AppContext *sharedMyManager = nil;
                 [chatView setLinesLeft:linesLeft];
                 cv.labelLines.text =  [NSString stringWithFormat:@"You can now vote!"];
             } else {
-                [chatView setLinesLeft:linesLeft];
-                cv.labelLines.text =  [NSString stringWithFormat:@"%i lines until you can vote", linesLeft];
+                if (cv.hasVoted == NO) {
+                    [chatView setLinesLeft:linesLeft];
+                    cv.labelLines.text =  [NSString stringWithFormat:@"%i lines until you can vote", linesLeft];
+                } else {
+                    cv.labelLines.text = @"Vote submitted";
+                }
             }
             [cv addMessage:newMessage];
         }
@@ -309,17 +313,20 @@ static AppContext *sharedMyManager = nil;
         NSString *_partnerName = [elm objectForKey:@"partner"];
         NSString *_linesMax = [elm objectForKey:@"lines_max"];
         [self.vc cbFoundChat:_sessionID:_partnerName];
+        AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
     }
     
     /* prarse a our list of active sessions */
     if ([name isEqualToString:@"session_list"]) {
         NSArray *elm = [event objectAtIndex:0];
+        NSLog(@"%@", elm);
         [self loadSessions:elm];
     }
     
     //the session has been ended
     if ([name isEqualToString:@"end_session"]) {
         NSDictionary *elm = [event objectAtIndex:0];
+        NSLog(@"%@", elm);
     }
     
     //there has been a vote on the current session

@@ -20,6 +20,8 @@
 @synthesize vote_2_id;
 @synthesize messages;
 @synthesize users;
+@synthesize  user_1;
+@synthesize  user_2;
 - (void) buildFromDict : (NSDictionary *) dict
 {
     self._id = [dict objectForKey:@"_id"];
@@ -33,6 +35,8 @@
     self.vote_2 = [dict objectForKey:@"vote_2"];
     self.vote_2_id = [dict objectForKey:@"vote_2_id"];
     self.messages = [dict objectForKey:@"messages"];
+    self.user_1     = [dict objectForKey:@"user_1"];
+    self.user_2     = [dict objectForKey:@"user_2"];
     return;
 }
 

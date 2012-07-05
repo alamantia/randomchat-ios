@@ -21,6 +21,9 @@
 @property (nonatomic, retain) NSString *vote_2_id;
 @property (nonatomic, retain) NSMutableArray *messages;
 @property (nonatomic, retain) NSMutableArray *users;
+@property (nonatomic, retain) NSDictionary *user_1;
+@property (nonatomic, retain) NSDictionary *user_2;
+
 - (void) buildFromDict : (NSDictionary *) dict;
 
 @end

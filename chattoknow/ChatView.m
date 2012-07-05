@@ -30,6 +30,8 @@
 @implementation ChatView
 @synthesize  buttonExit = _buttonExit;
 @synthesize  buttonVote = _buttonVote;
+@synthesize  partnerName;
+@synthesize  hasVoted;
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION     = 0.2;
@@ -51,6 +53,7 @@ CGFloat animatedDistance;
     if (self) {
         chatArray = [[NSMutableArray alloc] init];
         messageCells = [[NSMutableArray alloc] init];
+        self.hasVoted = NO;
     }
     return self;
 }
@@ -85,6 +88,11 @@ CGFloat animatedDistance;
 - (void) viewDidAppear:(BOOL)animated {
     /* make sure we are defined as the current chat view */
     [[AppContext getContext] setChatView:self];
+    _fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partnerName];
+    if (self.hasVoted == YES) {
+        self.buttonExit.hidden = NO;
+        self.buttonVote.hidden = YES;
+    }
 }
 
 - (void)viewDidUnload
@@ -356,10 +364,16 @@ CGFloat animatedDistance;
 
 - (void) setLinesLeft : (int) linesLeft
 {
-    if (linesLeft <= 0) {
-        _buttonVote.hidden = NO;
+    if (hasVoted == NO) {
+        if (linesLeft <= 0) {
+            _buttonVote.hidden = NO;
+        } else {
+            _buttonVote.hidden = YES;
+        }
     } else {
         _buttonVote.hidden = YES;
+        _buttonExit.hidden = NO;
+        _labelLines.text = @"Vote submitted";
     }
     return;
 }
@@ -379,6 +393,10 @@ CGFloat animatedDistance;
         [[[AppContext getContext] vc] Update];
         return;
     }
+    _labelLines.text = @"Vote submitted";
+    self.hasVoted = YES;
+    self.buttonVote.hidden = YES;
+    self.buttonExit.hidden = NO;
     return;
 }
 

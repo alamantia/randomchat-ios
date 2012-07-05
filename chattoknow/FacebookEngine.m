@@ -92,7 +92,7 @@
         NSString *user_name = [result objectForKey:@"first_name"];
 
         [[AppContext getContext] setFacebookID:fbID];
-        [[AppContext getContext] setFacebookName:name];
+        [[AppContext getContext] setFacebookName:user_name];
         [[AppContext getContext] setFacebookPicture:picture];
         [[AppContext getContext] setEmailAddress:email];
         [[AppContext getContext] setUser_name:user_name];

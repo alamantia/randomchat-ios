@@ -168,18 +168,28 @@
     return;
 }
 
-- (void) launchSession : (Session *) session
+- (void) launchSession : (Session *) session : (BOOL) hasVoted
 {
     ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
     [[AppContext getContext] setChatView:chatView];
     
+    [chatView setSessionID:session.token];
 
     
-    [chatView setSessionID:session.token];
+    for (NSString *user in session.users) {
+        if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
+            NSString *partnerName = @""; 
+            if ([ user isEqualToString:[session.user_1 objectForKey:@"token"]]) {
+                partnerName = [session.user_1 objectForKey:@"user_name"];
+            } else {
+                partnerName = [session.user_2 objectForKey:@"user_name"];
+            }
+            chatView.fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partnerName];
+            chatView.partnerName = partnerName;
+        }
+    }
+    
     [self.navigationController pushViewController:chatView animated:YES];
-
-
-
     for (NSDictionary *message in session.messages) {
         NSLog(@"Message %@", message);
         ChatMessage *cMessage = [[ChatMessage alloc] init];
@@ -200,17 +210,38 @@
     }
 
 
+    for (NSString *user in session.users) {
+        if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
+            NSLog(@"22 Partner is %@", user);
+            NSString *partnerName = @""; 
+            if ([ user isEqualToString:[session.user_1 objectForKey:@"token"]]) {
+                partnerName = [session.user_1 objectForKey:@"user_name"];
+            } else {
+                partnerName = [session.user_2 objectForKey:@"user_name"];
+            }
+            NSLog(@"22 Chatting With %@", partnerName);
+            chatView.fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partnerName];
+            chatView.partnerName = partnerName;
+        }
+    }
+    chatView.hasVoted = hasVoted;
+    if (hasVoted == YES) {
+        chatView.buttonExit.hidden = NO;
+        chatView.buttonVote.hidden = YES;
+        chatView.labelLines.text = @"Vote submitted";
+    }
     isLaunching = NO;
-    
     return;
 }
 
 - (void) cbSessionsLoaded 
 {
+    bool hasVoted = NO;
     NSLog(@"Sessions have been loaded");
     NSMutableArray *sessions = [[AppContext getContext] activeSessions];
     NSLog(@"There are %i active sessions", [sessions count]);
     for (Session *cSession in sessions) {
+        hasVoted = NO;
         if ([cSession.active boolValue] == YES) {
             NSLog(@"We have an active session");
             NSLog(@"Session messages %@", cSession.messages);
@@ -218,24 +249,32 @@
             /* if we have voted conintue */
             if ([cSession.vote_1_id isEqualToString:[[AppContext getContext] sessionID]]) {
                 NSLog(@"WE were vote 1");
+
                 if ([cSession.vote_1 intValue] != 1)
                     continue;
+                hasVoted = YES;
             } else if ([cSession.vote_2_id isEqualToString:[[AppContext getContext] sessionID]]) {
                 if ([cSession.vote_1 intValue] != 1)
                     continue;
-                continue;
+                hasVoted = YES;
             }
             for (NSString *user in cSession.users) {
                 [[AppContext getContext] sessionID];
                 if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
                     NSLog(@"Partner is %@", user);
-                    textChatTile.text = [NSString stringWithFormat:@"Session with %@", user];
+                    NSString *partnerName = @""; 
+                    if ([ user isEqualToString:[cSession.user_1 objectForKey:@"token"]]) {
+                        partnerName = [cSession.user_1 objectForKey:@"user_name"];
+                    } else {
+                        partnerName = [cSession.user_2 objectForKey:@"user_name"];
+                    }
+                    textChatTile.text = [NSString stringWithFormat:@"Session with %@", partnerName];
                     /* do we want to autolaunch a session!? */
                     /* not totally sure */
                     [activity stopAnimating];
                     buttonChat.userInteractionEnabled = YES;
                     if (isLaunching == YES) {
-                        [self launchSession:cSession];
+                        [self launchSession:cSession:hasVoted];
                     }
                     inSession = YES;
                     return;
@@ -260,6 +299,8 @@
 
 - (void) cbFoundChat : (NSString *) sessionID : (NSString *) partner
 {
+    [[AppContext getContext] sendListSessions];
+    return;
     [activity stopAnimating];
     ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
     [[AppContext getContext] setChatView:chatView];
