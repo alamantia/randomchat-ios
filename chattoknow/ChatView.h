@@ -17,8 +17,8 @@
     IBOutlet UILabel *_fieldName;
     IBOutlet UITableView *tableView;
     IBOutlet UILabel *_labelLines;
-    IBOutlet UIButton *buttonVote;
-    IBOutlet UIButton *buttonExit;
+    IBOutlet UIButton *_buttonVote;
+    IBOutlet UIButton *_buttonExit;
     IBOutlet UIView *adView;
     RateDialog *rd;
     GADBannerView *bannerView_;
@@ -27,7 +27,9 @@
 @property (nonatomic, retain) NSString* sessionID;
 @property (nonatomic, retain) UILabel *fieldName;
 @property (nonatomic, retain) UILabel *labelLines;
-
+@property (nonatomic, retain) UIButton *buttonExit;
+@property (nonatomic, retain) UIButton *buttonVote;
+@property (nonatomic) BOOL hasVoted;
 @property (nonatomic, retain) NSMutableArray *chatArray;
 @property (nonatomic, retain) NSMutableArray *messageCells;
 
@@ -42,6 +44,7 @@
 
 - (IBAction) clickVote :(id)sender;
 - (IBAction) clickEnd :(id)sender;
+- (IBAction) clickBack :(id)sender;
 
 - (void) cbVoteFinish : (int) result;
 - (void) setLinesLeft : (int) linesLeft;

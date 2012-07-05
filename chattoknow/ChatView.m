@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "UIColor-Expanded.h"
 
 #import "RateDialog.h"
 #import "ChatView.h"
@@ -27,6 +28,8 @@
 @end
 
 @implementation ChatView
+@synthesize  buttonExit = _buttonExit;
+@synthesize  buttonVote = _buttonVote;
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION     = 0.2;
@@ -55,7 +58,8 @@ CGFloat animatedDistance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    buttonVote.hidden = YES;
+    _buttonVote.hidden = YES;
+    _buttonExit.hidden = YES;
 
     // Do any additional setup after loading the view from its nib.
     
@@ -306,8 +310,8 @@ CGFloat animatedDistance;
     [label setFont:[UIFont systemFontOfSize:FONT_SIZE]];
     [label setTag:1];
     //34/100, 169/100, 215/100, 1.0
-    [label setBackgroundColor: [UIColor colorWithRed:34/100 green:169/100 blue:215/100 alpha:1]];
-    [[label layer] setBorderWidth:0.0f];
+    [label setBackgroundColor: [UIColor colorWithHexString:@"b8e84c"]];
+     [[label layer] setBorderWidth:0.0f];
     
     [[cell contentView] addSubview:label];
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -353,9 +357,9 @@ CGFloat animatedDistance;
 - (void) setLinesLeft : (int) linesLeft
 {
     if (linesLeft <= 0) {
-        buttonVote.hidden = NO;
+        _buttonVote.hidden = NO;
     } else {
-        buttonVote.hidden = YES;
+        _buttonVote.hidden = YES;
     }
     return;
 }
@@ -372,13 +376,18 @@ CGFloat animatedDistance;
 {
     if (result == 0) {
         [self.navigationController popViewControllerAnimated:NO];
+        [[[AppContext getContext] vc] Update];
+        return;
     }
-    [[[AppContext getContext] vc] Update];
     return;
 }
 
-/* back button or end session button, i'm not 100% sure on this one */
 - (IBAction) clickEnd :(id)sender
+{
+    return;
+}
+/* back button or end session button, i'm not 100% sure on this one */
+- (IBAction) clickBack :(id)sender
 {
     //NSLog(@"Sending end for %@", self.sessionID);
     //[[AppContext getContext] sendEnd: self.sessionID];

@@ -179,6 +179,7 @@
     [self.navigationController pushViewController:chatView animated:YES];
 
 
+
     for (NSDictionary *message in session.messages) {
         NSLog(@"Message %@", message);
         ChatMessage *cMessage = [[ChatMessage alloc] init];
@@ -199,6 +200,8 @@
     }
 
 
+    isLaunching = NO;
+    
     return;
 }
 
