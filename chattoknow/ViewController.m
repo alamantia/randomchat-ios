@@ -299,14 +299,15 @@
 
 - (void) cbFoundChat : (NSString *) sessionID : (NSString *) partner
 {
-    [[AppContext getContext] sendListSessions];
-    return;
+    //[[AppContext getContext] sendListSessions];
+    //return;
     [activity stopAnimating];
     ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
     [[AppContext getContext] setChatView:chatView];
     [chatView setSessionID:sessionID];
     [self.navigationController pushViewController:chatView animated:YES];
     chatView.fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partner];
+    chatView.partnerName = partner;
     return;
 }
 
