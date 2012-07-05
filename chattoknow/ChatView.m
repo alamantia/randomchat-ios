@@ -6,12 +6,16 @@
 //  Copyright (c) 2012 Player2. All rights reserved.
 //
 
-#import "ChatView.h"
-#import "AppContext.h"
 #import "MessageCell.h"
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 #import "RateDialog.h"
+#import "ChatView.h"
+#import "AppContext.h"
+#import "ViewController.h"
+
 
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
@@ -23,6 +27,7 @@
 @end
 
 @implementation ChatView
+
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION     = 0.2;
 static const CGFloat MAXIMUM_SCROLL_FRACTION     = 0.8;
@@ -50,13 +55,32 @@ CGFloat animatedDistance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    buttonVote.hidden = YES;
+
     // Do any additional setup after loading the view from its nib.
+    
+    // Create a view of the standard size at the bottom of the screen.
+    // Available AdSize constants are explained in GADAdSize.h.
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    
+    // Specify the ad's "unit identifier." This is your AdMob Publisher ID.
+    bannerView_.adUnitID = @"a14ff48dbd41ba6";
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    bannerView_.rootViewController = self;
+    [adView addSubview:bannerView_];
+    
+    // Initiate a generic request to load it with an ad.
+    GADRequest *request = [GADRequest request];
+    request.testing = YES;
+    [bannerView_ loadRequest:request];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     /* make sure we are defined as the current chat view */
     [[AppContext getContext] setChatView:self];
-    buttonVote.hidden = YES;
 }
 
 - (void)viewDidUnload
@@ -349,14 +373,15 @@ CGFloat animatedDistance;
     if (result == 0) {
         [self.navigationController popViewControllerAnimated:NO];
     }
+    [[[AppContext getContext] vc] Update];
     return;
 }
 
 /* back button or end session button, i'm not 100% sure on this one */
 - (IBAction) clickEnd :(id)sender
 {
-    NSLog(@"Sending end for %@", self.sessionID);
-    [[AppContext getContext] sendEnd: self.sessionID];
+    //NSLog(@"Sending end for %@", self.sessionID);
+    //[[AppContext getContext] sendEnd: self.sessionID];
     [self.navigationController popViewControllerAnimated:YES];
     return;
 }

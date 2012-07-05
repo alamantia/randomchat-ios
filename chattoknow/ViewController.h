@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TileButton.h"
+#import "GADBannerView.h"
 
 @interface ViewController : UIViewController {
     IBOutlet UIActivityIndicatorView *activity;
     IBOutlet UITextView *textChatTile;
+    IBOutlet TileButton *buttonChat;
+    IBOutlet UIView *adView;
     BOOL inSession;
+    BOOL isLaunching;
+    NSString *launchingSessionToken;
+    GADBannerView *bannerView_;
+
 }
 - (void)   setupFacebook;
 - (void)   cbFacebookLogin;
@@ -20,4 +28,5 @@
 - (void)     cbFoundChat : (NSString *) sessionID : (NSString *) partner;
 - (void)     cbSessionsLoaded ;
 - (IBAction) buttonDepressed : (id) sender;
+- (void) Update;
 @end

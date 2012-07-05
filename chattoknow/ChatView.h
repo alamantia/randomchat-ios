@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChatMessage.h"
 #import "RateDialog.h"
+#import "GADBannerView.h"
 
 @interface ChatView : UIViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate>
 {
@@ -17,9 +18,9 @@
     IBOutlet UITableView *tableView;
     IBOutlet UILabel *_labelLines;
     IBOutlet UIButton *buttonVote;
-    
+    IBOutlet UIView *adView;
     RateDialog *rd;
-    
+    GADBannerView *bannerView_;
 
 }
 @property (nonatomic, retain) NSString* sessionID;

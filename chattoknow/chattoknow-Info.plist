@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>Finda</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
@@ -45,5 +45,9 @@
 	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
+	<key>CFBundleIconFile</key>
+	<string>icon.png</string>
 </dict>
 </plist>

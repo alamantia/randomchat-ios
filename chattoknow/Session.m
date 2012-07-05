@@ -9,7 +9,6 @@
 #import "Session.h"
 
 @implementation Session
-
 @synthesize  _id;
 @synthesize token;
 @synthesize active;

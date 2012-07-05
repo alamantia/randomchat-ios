@@ -5,6 +5,7 @@
 //  Created by anthony lamantia on 5/28/12.
 //  Copyright (c) 2012 Player2. All rights reserved.
 //
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "AppContext.h"
 #import "ViewController.h"
@@ -270,6 +271,9 @@ static AppContext *sharedMyManager = nil;
         NSDecimalNumber *_lines = [elm objectForKey:@"lines"];
         NSDecimalNumber *_lines_max = [elm objectForKey:@"lines_max"];
         
+        if (![_senderId isEqualToString:self.sessionID]) {
+            AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+        }
         ChatView *cv = [[AppContext getContext] chatView];
         if ([_chatSessionId isEqualToString:cv.sessionID]) {
             ChatMessage *newMessage = [[ChatMessage alloc] init];

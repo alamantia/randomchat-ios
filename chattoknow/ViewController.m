@@ -96,8 +96,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     inSession = NO;
+    isLaunching = NO;
+    NSLog(@"View Did Appear");
     [self setupFacebook];
-
+    [[AppContext getContext] sendListSessions];
 }
 
 
@@ -107,6 +109,25 @@
     [self.navigationItem setTitle:@"Chat2Know"];
     [[AppContext getContext] setVc:self];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Create a view of the standard size at the bottom of the screen.
+    // Available AdSize constants are explained in GADAdSize.h.
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    
+    // Specify the ad's "unit identifier." This is your AdMob Publisher ID.
+    bannerView_.adUnitID = @"a14ff48dbd41ba6";
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    bannerView_.rootViewController = self;
+    [adView addSubview:bannerView_];
+    
+    // Initiate a generic request to load it with an ad.
+    GADRequest *request = [GADRequest request];
+    request.testing = YES;
+    [bannerView_ loadRequest:request];
+
+    
     return;
 }
 
@@ -123,9 +144,11 @@
 
 - (IBAction) clickFindChat : (id) sender
 {
+#if 0
     if (inSession == NO) {
         return;
-    }    
+    }
+#endif
     NSMutableArray *sessions = [[AppContext getContext] activeSessions];
     for (Session *cSession in sessions) {
         if ([cSession.active boolValue] == YES) {
@@ -135,8 +158,10 @@
                     /* do we want to autolaunch a session!? */
                     /* not totally sure */
                     [activity stopAnimating];
-                    [self launchSession:cSession];
+                    isLaunching = YES;
+                    launchingSessionToken = cSession.token;
                     inSession = YES;
+                    [[AppContext getContext] sendListSessions];
                     return;
                 }
             }
@@ -149,9 +174,13 @@
 {
     ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
     [[AppContext getContext] setChatView:chatView];
+    
+
+    
     [chatView setSessionID:session.token];
     [self.navigationController pushViewController:chatView animated:YES];
-    NSLog(@"Adding message");
+
+
     for (NSDictionary *message in session.messages) {
         NSLog(@"Message %@", message);
         ChatMessage *cMessage = [[ChatMessage alloc] init];
@@ -159,6 +188,19 @@
         cMessage.partnerId = [message objectForKey:@"sender"];
         [chatView addMessage:cMessage];
     }
+    
+    int linesLeft = [session.lines_max intValue] - [session.lines intValue];
+    
+    if (linesLeft <= 0) {
+        linesLeft = 0;
+        [chatView setLinesLeft:linesLeft];
+        chatView.labelLines.text =  [NSString stringWithFormat:@"You can now vote!"];
+    } else {
+        [chatView setLinesLeft:linesLeft];
+        chatView.labelLines.text =  [NSString stringWithFormat:@"%i lines until you can vote", linesLeft];
+    }
+
+
     return;
 }
 
@@ -180,7 +222,10 @@
                     /* do we want to autolaunch a session!? */
                     /* not totally sure */
                     [activity stopAnimating];
-                    //[self launchSession:cSession];
+                    buttonChat.userInteractionEnabled = YES;
+                    if (isLaunching == YES) {
+                        [self launchSession:cSession];
+                    }
                     inSession = YES;
                     return;
                 }
@@ -192,6 +237,13 @@
     [activity startAnimating];
     textChatTile.text = @"You are currently searching for a chat partner";
     [[AppContext getContext] sendFindChat];
+    buttonChat.userInteractionEnabled = NO;
+    return;
+}
+
+- (void) Update
+{
+    [[AppContext getContext] sendListSessions];
     return;
 }
 
