@@ -22,6 +22,9 @@
 @synthesize users;
 @synthesize  user_1;
 @synthesize  user_2;
+@synthesize  left_1;
+@synthesize  left_2;
+
 - (void) buildFromDict : (NSDictionary *) dict
 {
     self._id = [dict objectForKey:@"_id"];
@@ -37,6 +40,8 @@
     self.messages = [dict objectForKey:@"messages"];
     self.user_1     = [dict objectForKey:@"user_1"];
     self.user_2     = [dict objectForKey:@"user_2"];
+    self.left_1     = [dict objectForKey:@"left_1"];
+    self.left_2     = [dict objectForKey:@"left_2"];
     return;
 }
 

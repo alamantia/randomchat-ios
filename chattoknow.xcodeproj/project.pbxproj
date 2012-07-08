@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA4157FC15A8E6E6006DABE5 /* newIconF.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4157FB15A8E6E6006DABE5 /* newIconF.png */; };
+		CA4157FE15A90222006DABE5 /* iconCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4157FD15A90222006DABE5 /* iconCircle.png */; };
 		CA4BA6A51574767000B25C04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A41574767000B25C04 /* UIKit.framework */; };
 		CA4BA6A71574767000B25C04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A61574767000B25C04 /* Foundation.framework */; };
 		CA4BA6A91574767000B25C04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A81574767000B25C04 /* CoreGraphics.framework */; };
@@ -119,6 +121,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA4157FB15A8E6E6006DABE5 /* newIconF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newIconF.png; sourceTree = "<group>"; };
+		CA4157FD15A90222006DABE5 /* iconCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCircle.png; sourceTree = "<group>"; };
 		CA4BA6A01574767000B25C04 /* chattoknow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chattoknow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4BA6A41574767000B25C04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CA4BA6A61574767000B25C04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -418,6 +422,8 @@
 		CA643DDC15807A26001649FD /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				CA4157FD15A90222006DABE5 /* iconCircle.png */,
+				CA4157FB15A8E6E6006DABE5 /* newIconF.png */,
 				CA75359615A54285000BE64F /* Info 512x512.png */,
 				CA75359415A54254000BE64F /* Settings 512x512.png */,
 				CA75359215A5424D000BE64F /* Rate 512x512.png */,
@@ -641,6 +647,8 @@
 				CA75359315A5424D000BE64F /* Rate 512x512.png in Resources */,
 				CA75359515A54254000BE64F /* Settings 512x512.png in Resources */,
 				CA75359715A54285000BE64F /* Info 512x512.png in Resources */,
+				CA4157FC15A8E6E6006DABE5 /* newIconF.png in Resources */,
+				CA4157FE15A90222006DABE5 /* iconCircle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +721,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: anthony lamantia (T843PJZ5LW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -729,6 +738,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "A000716F-6F35-44BB-A92E-2FC6246BBE07";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -739,6 +749,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: anthony lamantia (T843PJZ5LW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -749,6 +760,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "A000716F-6F35-44BB-A92E-2FC6246BBE07";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -757,6 +769,7 @@
 		CA4BA6BF1574767100B25C04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: anthony lamantia (T843PJZ5LW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "chattoknow/chattoknow-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -770,6 +783,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A000716F-6F35-44BB-A92E-2FC6246BBE07";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -777,6 +791,7 @@
 		CA4BA6C01574767100B25C04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: anthony lamantia (T843PJZ5LW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "chattoknow/chattoknow-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -790,6 +805,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A000716F-6F35-44BB-A92E-2FC6246BBE07";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

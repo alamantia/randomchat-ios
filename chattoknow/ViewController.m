@@ -18,11 +18,21 @@
 @interface ViewController () {
     
 }
+
 - (void)   cbFacebookLogin;
+
 @end
 
 @implementation ViewController
-
+/* always poll */
+- (void) listPoll 
+{
+    if (isShowing == YES) {
+        [[AppContext getContext] sendListSessions];
+    }
+    [self performSelector:@selector(listPoll) withObject:nil afterDelay:10];
+    return;
+}
 
 - (IBAction) buttonDepressed : (id) sender
 {
@@ -91,18 +101,38 @@
     return;
 }
 
+- (void) wake
+{
+    [SVProgressHUD showWithStatus:@"Loading"];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    return;
+}
+
 - (void) viewDidAppear:(BOOL)animated
 {
     inSession = NO;
     isLaunching = NO;
-    NSLog(@"View Did Appear");
     [self setupFacebook];
+    [SVProgressHUD showWithStatus:@"Loading"];
     [[AppContext getContext] sendListSessions];
+    isShowing = YES;
+    buttonChat.enabled = NO;
+    [self listPoll];
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [SVProgressHUD dismiss];
+    isShowing = NO;
+    return;
+}
 
 - (void)viewDidLoad
 {
+    isShowing = NO;
     [super viewDidLoad];
     [self.navigationItem setTitle:@"Chat2Know"];
     [[AppContext getContext] setVc:self];
@@ -147,6 +177,8 @@
         return;
     }
 #endif
+    buttonChat.enabled = NO;
+    [SVProgressHUD showWithStatus:@"Loading"];
     NSMutableArray *sessions = [[AppContext getContext] activeSessions];
     for (Session *cSession in sessions) {
         if ([cSession.active boolValue] == YES) {
@@ -171,11 +203,9 @@
 - (void) launchSession : (Session *) session : (BOOL) hasVoted
 {
     ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
-    [[AppContext getContext] setChatView:chatView];
-    
+    [[AppContext getContext] setChatView:chatView];    
     [chatView setSessionID:session.token];
 
-    
     for (NSString *user in session.users) {
         if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
             NSString *partnerName = @""; 
@@ -208,8 +238,6 @@
         [chatView setLinesLeft:linesLeft];
         chatView.labelLines.text =  [NSString stringWithFormat:@"%i lines until you can vote", linesLeft];
     }
-
-
     for (NSString *user in session.users) {
         if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
             NSLog(@"22 Partner is %@", user);
@@ -236,6 +264,8 @@
 
 - (void) cbSessionsLoaded 
 {
+    [SVProgressHUD dismiss];
+    buttonChat.enabled = YES;
     bool hasVoted = NO;
     NSLog(@"Sessions have been loaded");
     NSMutableArray *sessions = [[AppContext getContext] activeSessions];
@@ -249,7 +279,6 @@
             /* if we have voted conintue */
             if ([cSession.vote_1_id isEqualToString:[[AppContext getContext] sessionID]]) {
                 NSLog(@"WE were vote 1");
-
                 if ([cSession.vote_1 intValue] != 1)
                     continue;
                 hasVoted = YES;
@@ -258,6 +287,16 @@
                     continue;
                 hasVoted = YES;
             }
+            
+            if ([cSession.left_1 isEqualToString:[[AppContext getContext] sessionID]]) {
+                continue;
+            }
+            
+            if ([cSession.left_2 isEqualToString:[[AppContext getContext] sessionID]]) {
+                continue;
+            }
+
+            
             for (NSString *user in cSession.users) {
                 [[AppContext getContext] sessionID];
                 if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
@@ -288,7 +327,7 @@
     textChatTile.text = @"You are currently searching for a chat partner";
     [[AppContext getContext] sendFindChat];
     buttonChat.userInteractionEnabled = NO;
-    return;
+    return; 
 }
 
 - (void) Update
@@ -299,8 +338,9 @@
 
 - (void) cbFoundChat : (NSString *) sessionID : (NSString *) partner
 {
-    //[[AppContext getContext] sendListSessions];
-    //return;
+    [[AppContext getContext] sendListSessions];
+    return;
+
     [activity stopAnimating];
     ChatView *chatView = [[ChatView alloc] initWithNibName:@"ChatView" bundle:nil];
     [[AppContext getContext] setChatView:chatView];

@@ -10,6 +10,7 @@
 
 #import "ViewController.h"
 #import "AppContext.h"
+#import "SVProgressHUD.h"
 
 @implementation AppDelegate
 @synthesize vc;
@@ -47,6 +48,12 @@
     [defaults synchronize];
     return;
 }
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
+}
+
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -126,16 +133,26 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[AppContext getContext] suspend];
+    [self.viewController.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    NSLog(@"Entered Foreground");
+    //Reset badge number
+    [[[AppContext getContext] viewController] wake];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[AppContext getContext] reconnect];
+    //Reset badge number
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

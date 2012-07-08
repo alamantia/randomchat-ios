@@ -16,7 +16,7 @@
 #import "ChatView.h"
 #import "AppContext.h"
 #import "ViewController.h"
-
+#import "SVProgressHUD.h"
 
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
@@ -253,6 +253,9 @@ CGFloat animatedDistance;
     [chatArray addObject:newMessage];
     [tableView reloadData];
     
+    if (hasVoted == YES) {
+        _labelLines.text = @"Vote submitted";
+    }
     int cells_count = [chatArray count];
     int sections_count = 1;
     NSIndexPath* ipath = [NSIndexPath indexPathForRow: cells_count-1 inSection: sections_count-1];
@@ -388,13 +391,13 @@ CGFloat animatedDistance;
 
 - (void) cbVoteFinish : (int) result
 {
+    self.hasVoted = YES;
     if (result == 0) {
         [self.navigationController popViewControllerAnimated:NO];
         [[[AppContext getContext] vc] Update];
         return;
     }
     _labelLines.text = @"Vote submitted";
-    self.hasVoted = YES;
     self.buttonVote.hidden = YES;
     self.buttonExit.hidden = NO;
     return;
@@ -402,14 +405,15 @@ CGFloat animatedDistance;
 
 - (IBAction) clickEnd :(id)sender
 {
+    [[AppContext getContext] sendEnd: self.sessionID];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     return;
 }
+
 /* back button or end session button, i'm not 100% sure on this one */
 - (IBAction) clickBack :(id)sender
 {
-    //NSLog(@"Sending end for %@", self.sessionID);
-    //[[AppContext getContext] sendEnd: self.sessionID];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     return;
 }
 

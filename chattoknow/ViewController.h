@@ -17,13 +17,14 @@
     IBOutlet UIView *adView;
     BOOL inSession;
     BOOL isLaunching;
+    BOOL isShowing;
     NSString *launchingSessionToken;
     GADBannerView *bannerView_;
 
 }
 - (void)   setupFacebook;
 - (void)   cbFacebookLogin;
-
+- (void) wake;
 - (IBAction) clickFindChat : (id) sender;
 - (void)     cbFoundChat : (NSString *) sessionID : (NSString *) partner;
 - (void)     cbSessionsLoaded ;

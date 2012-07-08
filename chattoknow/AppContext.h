@@ -57,5 +57,6 @@
 /* external request starting point */
 - (void) loginWithFacebook;
 - (void) loginWithFacebook_2;
+- (void) suspend;
 
 @end

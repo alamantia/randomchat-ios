@@ -52,6 +52,7 @@ static AppContext *sharedMyManager = nil;
     facebookEngine = [[FacebookEngine alloc] init];
     activeSessions = [[NSMutableArray alloc] init];
     sessionID = @"DEADBEEF";
+    self.sessionID = @"";
     self.apnsToken = @"";
     loggedIn = 0;
     [self reconnect];
@@ -69,12 +70,14 @@ static AppContext *sharedMyManager = nil;
 
 - (void)open
 {
+    [_webSocket close];
     [self reconnect];
     return;
 }
 
 - (void)close
 {
+    [_webSocket close];
     return;
 }
 
@@ -143,6 +146,8 @@ static AppContext *sharedMyManager = nil;
 - (void) sendListSessions
 {
     NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    if (self.sessionID == nil)
+        return;
     [wsPayload setObject:self.sessionID forKey:@"token"];
     [_webSocket sendEvent:@"list_sessions" : wsPayload];
     return;
@@ -243,6 +248,11 @@ static AppContext *sharedMyManager = nil;
         NSDictionary *elm = [event objectAtIndex:0];
         NSString *_sessionID = [elm objectForKey:@"token"];
         self.sessionID = _sessionID;
+        
+        if (![self.facebookToken isEqualToString:@""]) {
+            [self loginWithFacebook];
+        }
+        
     }
     if ([name isEqualToString:@"login"]) {
         /* login success! */
@@ -333,8 +343,17 @@ static AppContext *sharedMyManager = nil;
     if ([name isEqualToString:@"session_vote"]) {
         NSDictionary *elm = [event objectAtIndex:0];
     }
+}
 
-    
+- (void) awake  {
+    [self reconnect];
+    return;
+}
+
+- (void) suspend {
+    NSLog(@"closing websocket");
+    [_webSocket close];
+    return;
 }
 
 /* send updated location infromation to the server */
