@@ -142,7 +142,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     NSLog(@"Entered Foreground");
     //Reset badge number
-    [[[AppContext getContext] viewController] wake];
+    [[[AppContext getContext] vc] wake];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
 }

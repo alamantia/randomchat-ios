@@ -24,6 +24,18 @@
 @end
 
 @implementation ViewController
+
+- (void) disableButtons 
+{
+    buttonChat.enabled = NO;
+    return;
+}
+
+- (void) enableButtons
+{
+    buttonChat.enabled = YES;
+    return;
+}
 /* always poll */
 - (void) listPoll 
 {
@@ -119,7 +131,7 @@
     [SVProgressHUD showWithStatus:@"Loading"];
     [[AppContext getContext] sendListSessions];
     isShowing = YES;
-    buttonChat.enabled = NO;
+    [self disableButtons];
     [self listPoll];
 }
 
@@ -177,7 +189,7 @@
         return;
     }
 #endif
-    buttonChat.enabled = NO;
+    [self disableButtons];
     [SVProgressHUD showWithStatus:@"Loading"];
     NSMutableArray *sessions = [[AppContext getContext] activeSessions];
     for (Session *cSession in sessions) {
@@ -264,8 +276,6 @@
 
 - (void) cbSessionsLoaded 
 {
-    [SVProgressHUD dismiss];
-    buttonChat.enabled = YES;
     bool hasVoted = NO;
     NSLog(@"Sessions have been loaded");
     NSMutableArray *sessions = [[AppContext getContext] activeSessions];
@@ -310,12 +320,14 @@
                     textChatTile.text = [NSString stringWithFormat:@"Session with %@", partnerName];
                     /* do we want to autolaunch a session!? */
                     /* not totally sure */
-                    [activity stopAnimating];
-                    buttonChat.userInteractionEnabled = YES;
+                    [activity stopAnimating];    
                     if (isLaunching == YES) {
                         [self launchSession:cSession:hasVoted];
                     }
                     inSession = YES;
+                    [SVProgressHUD dismiss];
+                    [self enableButtons];
+
                     return;
                 }
             }
@@ -326,7 +338,8 @@
     [activity startAnimating];
     textChatTile.text = @"You are currently searching for a chat partner";
     [[AppContext getContext] sendFindChat];
-    buttonChat.userInteractionEnabled = NO;
+    [SVProgressHUD dismiss];
+    [self enableButtons];
     return; 
 }
 
