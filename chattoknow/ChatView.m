@@ -102,10 +102,6 @@ CGFloat animatedDistance;
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -197,6 +193,15 @@ CGFloat animatedDistance;
 
     return;
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+        return NO;
+    return YES;
+}
+
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {    
     CGRect textFieldRect =

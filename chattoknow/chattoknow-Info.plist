@@ -44,7 +44,7 @@
 		</dict>
 	</array>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
 	<key>UIApplicationExitsOnSuspend</key>
 	<false/>
 	<key>CFBundleIconFile</key>
