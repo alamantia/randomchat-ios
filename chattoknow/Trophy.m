@@ -10,4 +10,18 @@
 
 @implementation Trophy
 
+@synthesize  _id;
+@synthesize imageURL;
+@synthesize partnerID;
+@synthesize partnerName;
+
+- (void) loadFromDict : (NSDictionary *) dict
+{
+    self._id = [dict objectForKey:@"_id"];
+    self.imageURL = [dict objectForKey:@"imageURL"];
+    self.partnerID = [dict objectForKey:@"partnerID"];
+    self.partnerName = [dict objectForKey:@"partnerName"];
+    return;
+}
+
 @end

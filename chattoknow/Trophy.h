@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Trophy : NSObject
+@interface Trophy : NSObject {
+    
+}
+
+@property (nonatomic, retain) NSString *_id;
+@property (nonatomic, retain) NSString *imageURL;
+/* for possible future messaging */
+@property (nonatomic, retain) NSString *partnerID;
+@property (nonatomic, retain) NSString *partnerName;
 
 @end
