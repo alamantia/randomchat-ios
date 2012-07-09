@@ -127,6 +127,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [self.viewController.navigationController popToViewController:self.viewController animated:NO];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -134,7 +135,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [[AppContext getContext] suspend];
-    [self.viewController.navigationController popToRootViewControllerAnimated:NO];
+    [self.viewController.navigationController popToViewController:self.viewController animated:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -144,7 +145,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     //Reset badge number
     [[[AppContext getContext] vc] wake];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
+    [self.viewController.navigationController popToViewController:self.viewController animated:NO];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -153,6 +154,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[AppContext getContext] reconnect];
     //Reset badge number
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [self.viewController.navigationController popToViewController:self.viewController animated:NO];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

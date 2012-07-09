@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA2613DE15AA122E003E829B /* Trophy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2613DD15AA122E003E829B /* Trophy.m */; };
 		CA4157FC15A8E6E6006DABE5 /* newIconF.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4157FB15A8E6E6006DABE5 /* newIconF.png */; };
 		CA4157FE15A90222006DABE5 /* iconCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4157FD15A90222006DABE5 /* iconCircle.png */; };
 		CA4BA6A51574767000B25C04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A41574767000B25C04 /* UIKit.framework */; };
@@ -121,6 +122,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA2613DC15AA122E003E829B /* Trophy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trophy.h; sourceTree = "<group>"; };
+		CA2613DD15AA122E003E829B /* Trophy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trophy.m; sourceTree = "<group>"; };
 		CA4157FB15A8E6E6006DABE5 /* newIconF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newIconF.png; sourceTree = "<group>"; };
 		CA4157FD15A90222006DABE5 /* iconCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCircle.png; sourceTree = "<group>"; };
 		CA4BA6A01574767000B25C04 /* chattoknow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chattoknow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +339,8 @@
 			children = (
 				CA4BA6D71574787700B25C04 /* AppContext.h */,
 				CA4BA6D81574787700B25C04 /* AppContext.m */,
+				CA2613DC15AA122E003E829B /* Trophy.h */,
+				CA2613DD15AA122E003E829B /* Trophy.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				CA7534B815A0EE1B000BE64F /* Session.m in Sources */,
 				CA75350815A27399000BE64F /* TileButton.m in Sources */,
 				CA75351D15A27D76000BE64F /* UIColor-Expanded.m in Sources */,
+				CA2613DE15AA122E003E829B /* Trophy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
