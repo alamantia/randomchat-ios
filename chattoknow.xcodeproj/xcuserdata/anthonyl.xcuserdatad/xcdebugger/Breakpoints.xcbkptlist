@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "chattoknow/AppContext.m"
-         timestampString = "363403486.077621"
+         timestampString = "364023212.083531"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
          landmarkName = "-sendUpdatedProfile"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "chattoknow/AppContext.m"
-         timestampString = "363403486.077621"
+         timestampString = "364023212.083531"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
+         startingLineNumber = "142"
+         endingLineNumber = "142"
          landmarkName = "-sendChat::"
          landmarkType = "5">
       </FileBreakpoint>

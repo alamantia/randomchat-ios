@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrophyViewContainer : UIViewController
-
+@interface TrophyViewContainer : UIViewController {
+    NSMutableArray *trophyArray;
+}
+- (void) Update;
 @end

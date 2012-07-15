@@ -471,6 +471,30 @@
 					<int key="connectionID">40</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">buttonTrophy</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="42015189"/>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">buttonOptions</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="961417739"/>
+					</object>
+					<int key="connectionID">50</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">buttonInfo</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="712416357"/>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">clickFindChat:</string>
 						<reference key="source" ref="101319657"/>
@@ -478,6 +502,33 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">clickTrophy:</string>
+						<reference key="source" ref="42015189"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">46</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">clickOptions:</string>
+						<reference key="source" ref="961417739"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">47</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">clickInfo:</string>
+						<reference key="source" ref="712416357"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">48</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -645,7 +696,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">45</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -663,6 +714,9 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="buttonDepressed:">id</string>
 						<string key="clickFindChat:">id</string>
+						<string key="clickInfo:">id</string>
+						<string key="clickOptions:">id</string>
+						<string key="clickTrophy:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="buttonDepressed:">
@@ -673,11 +727,26 @@
 							<string key="name">clickFindChat:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="clickInfo:">
+							<string key="name">clickInfo:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clickOptions:">
+							<string key="name">clickOptions:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clickTrophy:">
+							<string key="name">clickTrophy:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="activity">UIActivityIndicatorView</string>
 						<string key="adView">UIView</string>
 						<string key="buttonChat">TileButton</string>
+						<string key="buttonInfo">TileButton</string>
+						<string key="buttonOptions">TileButton</string>
+						<string key="buttonTrophy">TileButton</string>
 						<string key="textChatTile">UITextView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -691,6 +760,18 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="buttonChat">
 							<string key="name">buttonChat</string>
+							<string key="candidateClassName">TileButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonInfo">
+							<string key="name">buttonInfo</string>
+							<string key="candidateClassName">TileButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonOptions">
+							<string key="name">buttonOptions</string>
+							<string key="candidateClassName">TileButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonTrophy">
+							<string key="name">buttonTrophy</string>
 							<string key="candidateClassName">TileButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="textChatTile">

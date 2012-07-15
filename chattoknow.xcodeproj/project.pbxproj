@@ -10,6 +10,11 @@
 		CA2613DE15AA122E003E829B /* Trophy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2613DD15AA122E003E829B /* Trophy.m */; };
 		CA4157FC15A8E6E6006DABE5 /* newIconF.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4157FB15A8E6E6006DABE5 /* newIconF.png */; };
 		CA4157FE15A90222006DABE5 /* iconCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4157FD15A90222006DABE5 /* iconCircle.png */; };
+		CA4B922F15B0E82000948E96 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B922D15B0E81F00948E96 /* OptionsViewController.m */; };
+		CA4B923015B0E82000948E96 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4B922E15B0E81F00948E96 /* OptionsViewController.xib */; };
+		CA4B923415B0E83100948E96 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B923215B0E83000948E96 /* InfoViewController.m */; };
+		CA4B923515B0E83100948E96 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4B923315B0E83100948E96 /* InfoViewController.xib */; };
+		CA4B928015B2BEF500948E96 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B927F15B2BEF500948E96 /* Utils.m */; };
 		CA4BA6A51574767000B25C04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A41574767000B25C04 /* UIKit.framework */; };
 		CA4BA6A71574767000B25C04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A61574767000B25C04 /* Foundation.framework */; };
 		CA4BA6A91574767000B25C04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4BA6A81574767000B25C04 /* CoreGraphics.framework */; };
@@ -126,6 +131,14 @@
 		CA2613DD15AA122E003E829B /* Trophy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trophy.m; sourceTree = "<group>"; };
 		CA4157FB15A8E6E6006DABE5 /* newIconF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newIconF.png; sourceTree = "<group>"; };
 		CA4157FD15A90222006DABE5 /* iconCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCircle.png; sourceTree = "<group>"; };
+		CA4B922C15B0E81F00948E96 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		CA4B922D15B0E81F00948E96 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		CA4B922E15B0E81F00948E96 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
+		CA4B923115B0E83000948E96 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		CA4B923215B0E83000948E96 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		CA4B923315B0E83100948E96 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		CA4B927E15B2BEF500948E96 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		CA4B927F15B2BEF500948E96 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		CA4BA6A01574767000B25C04 /* chattoknow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chattoknow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4BA6A41574767000B25C04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CA4BA6A61574767000B25C04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -306,6 +319,12 @@
 				CA4BA6B31574767000B25C04 /* AppDelegate.h */,
 				CA4BA6B41574767000B25C04 /* AppDelegate.m */,
 				CA4BA6AB1574767000B25C04 /* Supporting Files */,
+				CA4B922C15B0E81F00948E96 /* OptionsViewController.h */,
+				CA4B922D15B0E81F00948E96 /* OptionsViewController.m */,
+				CA4B922E15B0E81F00948E96 /* OptionsViewController.xib */,
+				CA4B923115B0E83000948E96 /* InfoViewController.h */,
+				CA4B923215B0E83000948E96 /* InfoViewController.m */,
+				CA4B923315B0E83100948E96 /* InfoViewController.xib */,
 			);
 			path = chattoknow;
 			sourceTree = "<group>";
@@ -492,6 +511,8 @@
 				CA75350715A27399000BE64F /* TileButton.m */,
 				CA75351B15A27D76000BE64F /* UIColor-Expanded.h */,
 				CA75351C15A27D76000BE64F /* UIColor-Expanded.m */,
+				CA4B927E15B2BEF500948E96 /* Utils.h */,
+				CA4B927F15B2BEF500948E96 /* Utils.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -654,6 +675,8 @@
 				CA75359715A54285000BE64F /* Info 512x512.png in Resources */,
 				CA4157FC15A8E6E6006DABE5 /* newIconF.png in Resources */,
 				CA4157FE15A90222006DABE5 /* iconCircle.png in Resources */,
+				CA4B923015B0E82000948E96 /* OptionsViewController.xib in Resources */,
+				CA4B923515B0E83100948E96 /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +706,9 @@
 				CA75350815A27399000BE64F /* TileButton.m in Sources */,
 				CA75351D15A27D76000BE64F /* UIColor-Expanded.m in Sources */,
 				CA2613DE15AA122E003E829B /* Trophy.m in Sources */,
+				CA4B922F15B0E82000948E96 /* OptionsViewController.m in Sources */,
+				CA4B923415B0E83100948E96 /* InfoViewController.m in Sources */,
+				CA4B928015B2BEF500948E96 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

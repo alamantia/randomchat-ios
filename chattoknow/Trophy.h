@@ -17,5 +17,8 @@
 /* for possible future messaging */
 @property (nonatomic, retain) NSString *partnerID;
 @property (nonatomic, retain) NSString *partnerName;
+@property (nonatomic, retain) NSString *partnerPicture;
+
+- (void) loadFromDict : (NSDictionary *) dict;
 
 @end

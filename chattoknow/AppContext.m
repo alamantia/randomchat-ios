@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "ChatMessage.h"
 #import "Session.h"
+#import "Trophy.h"
 
 static AppContext *sharedMyManager = nil;
 
@@ -31,7 +32,8 @@ static AppContext *sharedMyManager = nil;
 @synthesize loggedIn;
 @synthesize  vc;
 @synthesize  activeSessions;
-
+@synthesize  trophyView;
+@synthesize  trophys;
 + (id)getContext {
     @synchronized(self) {
         if (sharedMyManager == nil)
@@ -51,6 +53,7 @@ static AppContext *sharedMyManager = nil;
 {
     facebookEngine = [[FacebookEngine alloc] init];
     activeSessions = [[NSMutableArray alloc] init];
+    trophys = [[NSMutableArray alloc] init];
     sessionID = @"DEADBEEF";
     self.sessionID = @"";
     self.apnsToken = @"";
@@ -161,6 +164,14 @@ static AppContext *sharedMyManager = nil;
     return;
 }
 
+- (void) sendListTrophys 
+{
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [_webSocket sendEvent:@"list_trophys" : wsPayload];
+    return;
+}
+
 /* send a point with the needed sessionID */
 - (void) sendPing 
 {
@@ -194,6 +205,19 @@ static AppContext *sharedMyManager = nil;
     NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
     [wsPayload setObject:self.sessionID forKey:@"token"];
     [_webSocket sendEvent:@"ping" : wsPayload];
+    return;
+}
+- (void) loadTrophys : (NSArray *) trophyArray
+{
+    [trophys removeAllObjects];
+    /* signal that we have read in needed trophys */    
+    for (NSDictionary *trophy in trophyArray) {
+        NSLog(@"Got a trophy %@", trophy);
+        Trophy *newTrophy = [[Trophy alloc] init];
+        [newTrophy loadFromDict:trophy];
+        [trophys addObject:newTrophy];
+    }
+    [[[AppContext getContext] trophyView] cbUpdatedTrophys];
     return;
 }
 
@@ -342,6 +366,14 @@ static AppContext *sharedMyManager = nil;
     //there has been a vote on the current session
     if ([name isEqualToString:@"session_vote"]) {
         NSDictionary *elm = [event objectAtIndex:0];
+    }
+    
+    
+    if ([name isEqualToString:@"trophy_list"]) {
+        NSArray *elm = [event objectAtIndex:0];
+        NSLog(@"-- GOT A TROPHY LIST");
+        NSLog(@"%@", elm);
+        [self loadTrophys:elm];
     }
 }
 

@@ -96,8 +96,6 @@
         [[AppContext getContext] setFacebookPicture:picture];
         [[AppContext getContext] setEmailAddress:email];
         [[AppContext getContext] setUser_name:user_name];
-
-        //loginWithFacebook_2
         [[AppContext getContext] loginWithFacebook_2];
         
         /* we should now be able to login */

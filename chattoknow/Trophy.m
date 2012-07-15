@@ -14,13 +14,15 @@
 @synthesize imageURL;
 @synthesize partnerID;
 @synthesize partnerName;
+@synthesize partnerPicture;
 
 - (void) loadFromDict : (NSDictionary *) dict
 {
     self._id = [dict objectForKey:@"_id"];
-    self.imageURL = [dict objectForKey:@"imageURL"];
-    self.partnerID = [dict objectForKey:@"partnerID"];
-    self.partnerName = [dict objectForKey:@"partnerName"];
+    self.imageURL = [dict objectForKey:@"picture"];
+    self.partnerID = [dict objectForKey:@"from_user"];
+    self.partnerName = [dict objectForKey:@"name"];
+    self.partnerPicture = [dict objectForKey:@"picture"];
     return;
 }
 

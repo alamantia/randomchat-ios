@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrophyViewCell : UIViewController
+@interface TrophyViewCell : UIViewController {
+    IBOutlet UIImageView *_picture;
+    IBOutlet UILabel     *_label;
+}
+@property (nonatomic, retain) UIImageView *picture;
+@property (nonatomic, retain) UILabel *label;
 
 @end

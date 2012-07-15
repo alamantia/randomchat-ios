@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrophyViewContainer.h"
 
-@interface TrophyView : UIViewController
+@interface TrophyView : UIViewController <UIScrollViewDelegate>{
+    IBOutlet UIScrollView *_scrollView;
+    TrophyViewContainer *contentView;
+}
+
+- (IBAction)  clickBack : (id) sender;
+- (void)      cbUpdatedTrophys;
 
 @end

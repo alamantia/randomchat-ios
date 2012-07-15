@@ -1,20 +1,19 @@
 //
-//  TrophyViewCell.m
+//  OptionsViewController.m
 //  chattoknow
 //
-//  Created by anthony lamantia on 6/25/12.
+//  Created by anthony lamantia on 7/13/12.
 //  Copyright (c) 2012 Player2. All rights reserved.
 //
 
-#import "TrophyViewCell.h"
+#import "OptionsViewController.h"
 
-@interface TrophyViewCell ()
+@interface OptionsViewController ()
 
 @end
 
-@implementation TrophyViewCell
-@synthesize  picture = _picture;
-@synthesize  label = _label;
+@implementation OptionsViewController
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

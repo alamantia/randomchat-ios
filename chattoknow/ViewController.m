@@ -13,7 +13,7 @@
 #import "Facebook.h"
 #import "Session.h"
 #import "ChatMessage.h"
-
+#import "TrophyView.h"
 
 @interface ViewController () {
     
@@ -28,12 +28,18 @@
 - (void) disableButtons 
 {
     buttonChat.enabled = NO;
+    buttonInfo.enabled = NO;
+    buttonTrophy.enabled = NO;
+    buttonOptions.enabled = NO;
     return;
 }
 
 - (void) enableButtons
 {
-    buttonChat.enabled = YES;
+    buttonChat.enabled    = YES;
+    buttonInfo.enabled    = YES;
+    buttonTrophy.enabled  = YES;
+    buttonOptions.enabled = YES;
     return;
 }
 /* always poll */
@@ -364,6 +370,24 @@
     [self.navigationController pushViewController:chatView animated:YES];
     chatView.fieldName.text = [NSString stringWithFormat:@"Chatting with %@", partner];
     chatView.partnerName = partner;
+    return;
+}
+
+- (IBAction) clickTrophy : (id) sender
+{
+    tv = [[TrophyView alloc] initWithNibName:@"TrophyView" bundle:nil];
+    [self.navigationController pushViewController:tv animated:YES];
+
+    return;
+}
+
+- (IBAction) clickOptions : (id) sender
+{
+    return;
+}
+
+- (IBAction) clickInfo : (id) sender
+{
     return;
 }
 

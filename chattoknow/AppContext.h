@@ -12,6 +12,7 @@
 #import "FacebookEngine.h"
 #import "ViewController.h"
 #import "ChatView.h"
+#import "TrophyView.h"
 
 #define FACEBOOK_APP_ID @"392801247428039"
 @interface AppContext : NSObject <SRWebSocketDelegate> {
@@ -23,6 +24,8 @@
 
 @property (nonatomic, retain) NSMutableArray *chatSessions;
 @property (nonatomic, retain) NSMutableArray *activeSessions;
+@property (nonatomic, retain) NSMutableArray *trophys;
+
 @property (nonatomic, retain) NSString *sessionID;
 @property (nonatomic, assign) id <SRWebSocketDelegate> delegate;
 @property (nonatomic, retain) Facebook *facebook;
@@ -38,6 +41,8 @@
 @property (nonatomic)         int loggedIn;
 @property (nonatomic, retain) ViewController *vc;
 @property (nonatomic, retain) ChatView *chatView;
+@property (nonatomic, retain) TrophyView *trophyView;
+
 - (void) open;
 - (void) reconnect;
 - (void) close;
@@ -51,6 +56,7 @@
 - (void) sendEnd : (NSString *) chatSession ;
 - (void) sendVote :(NSString *) value:  (NSString *) chatSession ;
 - (void) sendFindChat;
+- (void) sendListTrophys;
 - (void) sendListSessions;
 - (void) updateLocation : (NSNumber *) lat : (NSNumber *) lon;
 
