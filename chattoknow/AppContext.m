@@ -405,6 +405,14 @@ static AppContext *sharedMyManager = nil;
 /* send updated location infromation to the server */
 - (void) updateLocation : (NSNumber *) lat : (NSNumber *) lon
 {
+    if ([self.sessionID isEqualToString:@""]) {
+        return;
+    }
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [wsPayload setValue:lat forKey:@"lat"];
+    [wsPayload setValue:lat forKey:@"lon"];
+    [_webSocket sendEvent:@"location" : wsPayload];
     return;
 }
 

@@ -45,16 +45,40 @@
     NSLog(@"%i", switchSearching.on);
     NSLog(@"%i", segmentRange.selectedSegmentIndex);
     [SVProgressHUD showWithStatus:@"Updating"];
+    
+    NSNumber *rangeValue     = [NSNumber numberWithInt:segmentRange.selectedSegmentIndex];
+    NSNumber *searchingValue = [NSNumber numberWithBool:switchSearching.on];
+
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:rangeValue forKey:@"rangeValue"];
+    [params setValue:searchingValue forKey:@"searchingValue"];
     [params setObject: [[AppContext getContext] sessionID] forKey:@"token"];
     [[AppContext getContext] sendOptions:params];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
+    [defaults setValue:rangeValue forKey:@"rangeValue"];
+    [defaults setValue:searchingValue forKey:@"searchingValue"];
+    [defaults synchronize];
     return;
 }
 
 - (void) updateSettings
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
-
+    NSNumber *rangeValue     = [defaults objectForKey:@"rangeValue"];
+    NSNumber *searchingValue =[defaults objectForKey:@"searchingValue"];
+ 
+    if (rangeValue == nil) {
+        [segmentRange setSelectedSegmentIndex: 0];
+    } else {
+        [segmentRange setSelectedSegmentIndex:[rangeValue integerValue]];
+    }
+    
+    if (searchingValue == nil) {
+        [switchSearching setOn: NO];
+    } else {
+        [switchSearching setOn: [searchingValue boolValue]];
+    }
     
     [defaults synchronize];
     return;
@@ -62,10 +86,6 @@
 
 - (IBAction)sliderChange:(id)sender {
     [self transmitSettings];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
-
-    [defaults synchronize];
     return;
 }
 
@@ -98,6 +118,7 @@
 {
     [super viewDidLoad];
     [[AppContext getContext] setOptionView:self];
+    [self updateSettings];
     // Do any additional setup after loading the view from its nib.
 }
 
