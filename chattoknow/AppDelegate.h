@@ -15,7 +15,7 @@
 
 @class ViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, FBSessionDelegate>
+@interface AppDelegate : UIResponder <UIAlertViewDelegate, UIApplicationDelegate, CLLocationManagerDelegate, FBSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) ViewController *vc;

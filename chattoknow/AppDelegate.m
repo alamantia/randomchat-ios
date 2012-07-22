@@ -42,6 +42,34 @@
     return;
 }
 
+
+/* make sure location services are active */
+- (void)locationManager: (CLLocationManager *)manager
+       didFailWithError: (NSError *)error {
+    
+    NSString *errorString;
+    [manager stopUpdatingLocation];
+    NSLog(@"Error: %@",[error localizedDescription]);
+    switch([error code]) {
+        case kCLErrorDenied:
+            //Access denied by user
+            errorString = @"Access to Location Services denied by user";
+            //Do something...
+            break;
+        case kCLErrorLocationUnknown:
+            //Probably temporary...
+            errorString = @"Location data unavailable";
+            //Do something else...
+            return;
+        default:
+            errorString = @"An unknown error has occurred";
+            break;
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+
 -(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
@@ -84,9 +112,26 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     return;
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    exit (0);
+    return;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[AppContext getContext] Setup];
+    
+    if(![CLLocationManager locationServicesEnabled] ||
+       [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No location services" 
+                                                        message:@"You must have location services enabled to use this app." 
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
     
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     reach.reachableBlock = ^(Reachability*reach) {
@@ -94,7 +139,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     };
     
     reach.unreachableBlock = ^(Reachability*reach) {
-        NSLog(@"UNREACHABLE!");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection" 
+                                                        message:@"You must be connected to the internet to use this app." 
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     };
     
     // start the notifier which will cause the reachability object to retain itself!
