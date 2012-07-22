@@ -68,6 +68,7 @@
 		CA75359315A5424D000BE64F /* Rate 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359215A5424D000BE64F /* Rate 512x512.png */; };
 		CA75359515A54254000BE64F /* Settings 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359415A54254000BE64F /* Settings 512x512.png */; };
 		CA75359715A54285000BE64F /* Info 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359615A54285000BE64F /* Info 512x512.png */; };
+		CA861B1F15BB998E005D5A30 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CA861B1E15BB998E005D5A30 /* Reachability.m */; };
 		CAB4419C158C834F0000857F /* Thumbdown 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419A158C834F0000857F /* Thumbdown 512x512.png */; };
 		CAB4419D158C834F0000857F /* Thumbs up 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419B158C834F0000857F /* Thumbs up 512x512.png */; };
 		CAB441A1158D070F0000857F /* RateDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4419F158D070F0000857F /* RateDialog.m */; };
@@ -226,6 +227,8 @@
 		CA75359215A5424D000BE64F /* Rate 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rate 512x512.png"; sourceTree = "<group>"; };
 		CA75359415A54254000BE64F /* Settings 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 512x512.png"; sourceTree = "<group>"; };
 		CA75359615A54285000BE64F /* Info 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info 512x512.png"; sourceTree = "<group>"; };
+		CA861B1D15BB998E005D5A30 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CA861B1E15BB998E005D5A30 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CAB4419A158C834F0000857F /* Thumbdown 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbdown 512x512.png"; sourceTree = "<group>"; };
 		CAB4419B158C834F0000857F /* Thumbs up 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbs up 512x512.png"; sourceTree = "<group>"; };
 		CAB4419E158D070F0000857F /* RateDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateDialog.h; sourceTree = "<group>"; };
@@ -403,6 +406,8 @@
 		CA4BA7401575DF1F00B25C04 /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				CA861B1D15BB998E005D5A30 /* Reachability.h */,
+				CA861B1E15BB998E005D5A30 /* Reachability.m */,
 				CA7533D3159973A6000BE64F /* New Group */,
 				CA643DE615818C2F001649FD /* TrophyView.h */,
 				CA643DE715818C2F001649FD /* TrophyView.m */,
@@ -709,6 +714,7 @@
 				CA4B922F15B0E82000948E96 /* OptionsViewController.m in Sources */,
 				CA4B923415B0E83100948E96 /* InfoViewController.m in Sources */,
 				CA4B928015B2BEF500948E96 /* Utils.m in Sources */,
+				CA861B1F15BB998E005D5A30 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

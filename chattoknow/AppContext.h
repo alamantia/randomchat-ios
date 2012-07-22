@@ -13,6 +13,7 @@
 #import "ViewController.h"
 #import "ChatView.h"
 #import "TrophyView.h"
+#import "OptionsViewController.h"
 
 #define FACEBOOK_APP_ID @"392801247428039"
 @interface AppContext : NSObject <SRWebSocketDelegate> {
@@ -42,7 +43,7 @@
 @property (nonatomic, retain) ViewController *vc;
 @property (nonatomic, retain) ChatView *chatView;
 @property (nonatomic, retain) TrophyView *trophyView;
-
+@property (nonatomic, retain) OptionsViewController *optionView;
 - (void) open;
 - (void) reconnect;
 - (void) close;
@@ -57,6 +58,7 @@
 - (void) sendVote :(NSString *) value:  (NSString *) chatSession ;
 - (void) sendFindChat;
 - (void) sendListTrophys;
+- (void) sendOptions : (NSDictionary *) options;
 - (void) sendListSessions;
 - (void) updateLocation : (NSNumber *) lat : (NSNumber *) lon;
 

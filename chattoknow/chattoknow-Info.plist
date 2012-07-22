@@ -51,5 +51,9 @@
 	<string>newIconF.png</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 </dict>
 </plist>

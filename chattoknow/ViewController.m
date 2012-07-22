@@ -14,6 +14,8 @@
 #import "Session.h"
 #import "ChatMessage.h"
 #import "TrophyView.h"
+#import "OptionsViewController.h"
+#import "InfoViewController.h"
 
 @interface ViewController () {
     
@@ -383,11 +385,16 @@
 
 - (IBAction) clickOptions : (id) sender
 {
+    NSLog(@"Options clicked");
+    OptionsViewController *ovc = [[OptionsViewController alloc] initWithNibName:@"OptionsViewController" bundle:nil];
+    [self.navigationController pushViewController:ovc animated:YES];
     return;
 }
 
 - (IBAction) clickInfo : (id) sender
 {
+    InfoViewController *ivc = [[OptionsViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
+    [self.navigationController pushViewController:ivc animated:YES];
     return;
 }
 

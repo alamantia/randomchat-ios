@@ -34,6 +34,8 @@ static AppContext *sharedMyManager = nil;
 @synthesize  activeSessions;
 @synthesize  trophyView;
 @synthesize  trophys;
+@synthesize  optionView;
+
 + (id)getContext {
     @synchronized(self) {
         if (sharedMyManager == nil)
@@ -153,6 +155,15 @@ static AppContext *sharedMyManager = nil;
         return;
     [wsPayload setObject:self.sessionID forKey:@"token"];
     [_webSocket sendEvent:@"list_sessions" : wsPayload];
+    return;
+}
+
+- (void) sendOptions : (NSDictionary *) options
+{ 
+    NSLog(@"Sending set options");
+    NSMutableDictionary *wsPayload = [[NSMutableDictionary alloc] init];
+    [wsPayload setObject:self.sessionID forKey:@"token"];
+    [_webSocket sendEvent:@"set_options" : options];
     return;
 }
 
@@ -368,6 +379,9 @@ static AppContext *sharedMyManager = nil;
         NSDictionary *elm = [event objectAtIndex:0];
     }
     
+    if ([name isEqualToString:@"set_options"]) {
+        [[[AppContext getContext] optionView] cbSettingsUpdated];
+    }
     
     if ([name isEqualToString:@"trophy_list"]) {
         NSArray *elm = [event objectAtIndex:0];

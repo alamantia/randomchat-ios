@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OptionsViewController : UIViewController
+@interface OptionsViewController : UIViewController {
+    IBOutlet UISlider *sliderRange;
+    IBOutlet UISwitch *switchSearching;
+    IBOutlet UISegmentedControl *segmentRange;
+}
+- (IBAction)  clickBack : (id) sender;
+
+- (IBAction)  clickQuit : (id) sender;
+
+- (IBAction) sliderChange:(id)sender;
+
+- (void) cbSettingsUpdated;
 
 @end

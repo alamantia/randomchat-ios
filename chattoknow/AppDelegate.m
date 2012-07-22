@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "AppContext.h"
 #import "SVProgressHUD.h"
+#import "Reachability.h"
 
 @implementation AppDelegate
 @synthesize vc;
@@ -87,6 +88,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 {
     [[AppContext getContext] Setup];
     
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    reach.reachableBlock = ^(Reachability*reach) {
+        NSLog(@"REACHABLE!");
+    };
+    
+    reach.unreachableBlock = ^(Reachability*reach) {
+        NSLog(@"UNREACHABLE!");
+    };
+    
+    // start the notifier which will cause the reachability object to retain itself!
+    [reach startNotifier];
     //Reset badge number
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
