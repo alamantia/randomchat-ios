@@ -53,16 +53,16 @@
     switch([error code]) {
         case kCLErrorDenied:
             //Access denied by user
-            errorString = @"Access to Location Services denied by user";
+            errorString =@"You must have location services enabled to use this app." ;
             //Do something...
             break;
         case kCLErrorLocationUnknown:
             //Probably temporary...
-            errorString = @"Location data unavailable";
+            errorString =@"You must have location services enabled to use this app." ;
             //Do something else...
             return;
         default:
-            errorString = @"An unknown error has occurred";
+            errorString = @"You must have location services enabled to use this app." ;
             break;
     }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
