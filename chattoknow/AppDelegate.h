@@ -22,4 +22,6 @@
 @property (strong, nonatomic) ViewController *viewController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
+- (void) facebookSetup;
+
 @end

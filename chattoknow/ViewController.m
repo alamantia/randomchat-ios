@@ -16,9 +16,11 @@
 #import "TrophyView.h"
 #import "OptionsViewController.h"
 #import "InfoViewController.h"
+#import "FacebookDialog.h"
+#import "AppDelegate.h"
 
 @interface ViewController () {
-    
+    FacebookDialog *facebookDialog;
 }
 
 - (void)   cbFacebookLogin;
@@ -67,6 +69,8 @@
 }
 
 - (void)   setupFacebook {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate facebookSetup];
     Facebook *facebook = [[AppContext getContext] facebook];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
@@ -76,7 +80,6 @@
     } else {
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"user_likes", 
-                                @"read_stream",
                                 @"user_relationships",
                                 @"friends_relationships",
                                 @"user_status",
@@ -135,6 +138,13 @@
 {
     inSession = NO;
     isLaunching = NO;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"]  == nil) {
+        NSLog(@"NO FACEBOOK YET");
+        return;
+    }
+    
     [self setupFacebook];
     [SVProgressHUD showWithStatus:@"Loading"];
     [[AppContext getContext] sendListSessions];
@@ -317,7 +327,6 @@
                 continue;
             }
 
-            
             for (NSString *user in cSession.users) {
                 [[AppContext getContext] sessionID];
                 if (![user isEqualToString:[[AppContext getContext] sessionID]]) {
@@ -393,7 +402,7 @@
 
 - (IBAction) clickInfo : (id) sender
 {
-    InfoViewController *ivc = [[OptionsViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
+    InfoViewController *ivc = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
     [self.navigationController pushViewController:ivc animated:YES];
     return;
 }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoViewController : UIViewController {
-    
+    IBOutlet UIView *contentView;
 }
 
 - (IBAction)  clickBack : (id) sender;

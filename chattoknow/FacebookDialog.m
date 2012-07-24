@@ -1,19 +1,20 @@
 //
-//  InfoViewController.m
+//  FacebookDialog.m
 //  chattoknow
 //
-//  Created by anthony lamantia on 7/13/12.
+//  Created by anthony lamantia on 7/23/12.
 //  Copyright (c) 2012 Player2. All rights reserved.
 //
 
-#import "InfoViewController.h"
+#import "FacebookDialog.h"
+#import "AppContext.h"
+#import "ViewController.h"
 
-@interface InfoViewController () {
-    IBOutlet UIWebView *webView;
-}
+@interface FacebookDialog ()
+
 @end
 
-@implementation InfoViewController
+@implementation FacebookDialog
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,9 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"info" ofType:@"html"];
-    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-    [webView loadHTMLString:htmlString baseURL:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,11 +43,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)  clickBack : (id) sender
+- (IBAction) clickFacebook : (id) sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+    [[[AppContext getContext] vc] setupFacebook];
     return;
 }
-
 
 @end

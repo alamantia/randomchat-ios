@@ -69,6 +69,11 @@
 		CA75359515A54254000BE64F /* Settings 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359415A54254000BE64F /* Settings 512x512.png */; };
 		CA75359715A54285000BE64F /* Info 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA75359615A54285000BE64F /* Info 512x512.png */; };
 		CA861B1F15BB998E005D5A30 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CA861B1E15BB998E005D5A30 /* Reachability.m */; };
+		CA861B2115BBEA90005D5A30 /* info.html in Resources */ = {isa = PBXBuildFile; fileRef = CA861B2015BBEA90005D5A30 /* info.html */; };
+		CA861B5215BE579C005D5A30 /* FacebookDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CA861B5015BE579C005D5A30 /* FacebookDialog.m */; };
+		CA861B5315BE579C005D5A30 /* FacebookDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA861B5115BE579C005D5A30 /* FacebookDialog.xib */; };
+		CA861B5615BE5810005D5A30 /* facebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CA861B5415BE5810005D5A30 /* facebookButton.png */; };
+		CA861B5715BE5810005D5A30 /* facebookButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA861B5515BE5810005D5A30 /* facebookButton@2x.png */; };
 		CAB4419C158C834F0000857F /* Thumbdown 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419A158C834F0000857F /* Thumbdown 512x512.png */; };
 		CAB4419D158C834F0000857F /* Thumbs up 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB4419B158C834F0000857F /* Thumbs up 512x512.png */; };
 		CAB441A1158D070F0000857F /* RateDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4419F158D070F0000857F /* RateDialog.m */; };
@@ -229,6 +234,12 @@
 		CA75359615A54285000BE64F /* Info 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info 512x512.png"; sourceTree = "<group>"; };
 		CA861B1D15BB998E005D5A30 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CA861B1E15BB998E005D5A30 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CA861B2015BBEA90005D5A30 /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info.html; sourceTree = "<group>"; };
+		CA861B4F15BE579C005D5A30 /* FacebookDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookDialog.h; sourceTree = "<group>"; };
+		CA861B5015BE579C005D5A30 /* FacebookDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookDialog.m; sourceTree = "<group>"; };
+		CA861B5115BE579C005D5A30 /* FacebookDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookDialog.xib; sourceTree = "<group>"; };
+		CA861B5415BE5810005D5A30 /* facebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookButton.png; sourceTree = "<group>"; };
+		CA861B5515BE5810005D5A30 /* facebookButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebookButton@2x.png"; sourceTree = "<group>"; };
 		CAB4419A158C834F0000857F /* Thumbdown 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbdown 512x512.png"; sourceTree = "<group>"; };
 		CAB4419B158C834F0000857F /* Thumbs up 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumbs up 512x512.png"; sourceTree = "<group>"; };
 		CAB4419E158D070F0000857F /* RateDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateDialog.h; sourceTree = "<group>"; };
@@ -328,6 +339,9 @@
 				CA4B923115B0E83000948E96 /* InfoViewController.h */,
 				CA4B923215B0E83000948E96 /* InfoViewController.m */,
 				CA4B923315B0E83100948E96 /* InfoViewController.xib */,
+				CA861B4F15BE579C005D5A30 /* FacebookDialog.h */,
+				CA861B5015BE579C005D5A30 /* FacebookDialog.m */,
+				CA861B5115BE579C005D5A30 /* FacebookDialog.xib */,
 			);
 			path = chattoknow;
 			sourceTree = "<group>";
@@ -451,6 +465,8 @@
 		CA643DDC15807A26001649FD /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				CA861B5415BE5810005D5A30 /* facebookButton.png */,
+				CA861B5515BE5810005D5A30 /* facebookButton@2x.png */,
 				CA4157FD15A90222006DABE5 /* iconCircle.png */,
 				CA4157FB15A8E6E6006DABE5 /* newIconF.png */,
 				CA75359615A54285000BE64F /* Info 512x512.png */,
@@ -465,6 +481,7 @@
 				CA643DDD15807A2F001649FD /* bg@2x.png */,
 				CA643DDE15807A2F001649FD /* bg.png */,
 				CA75358C15A4CE27000BE64F /* Inbox 512x512.png */,
+				CA861B2015BBEA90005D5A30 /* info.html */,
 			);
 			name = assets;
 			sourceTree = "<group>";
@@ -682,6 +699,10 @@
 				CA4157FE15A90222006DABE5 /* iconCircle.png in Resources */,
 				CA4B923015B0E82000948E96 /* OptionsViewController.xib in Resources */,
 				CA4B923515B0E83100948E96 /* InfoViewController.xib in Resources */,
+				CA861B2115BBEA90005D5A30 /* info.html in Resources */,
+				CA861B5315BE579C005D5A30 /* FacebookDialog.xib in Resources */,
+				CA861B5615BE5810005D5A30 /* facebookButton.png in Resources */,
+				CA861B5715BE5810005D5A30 /* facebookButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +736,7 @@
 				CA4B923415B0E83100948E96 /* InfoViewController.m in Sources */,
 				CA4B928015B2BEF500948E96 /* Utils.m in Sources */,
 				CA861B1F15BB998E005D5A30 /* Reachability.m in Sources */,
+				CA861B5215BE579C005D5A30 /* FacebookDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

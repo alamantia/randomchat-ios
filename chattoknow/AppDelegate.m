@@ -22,6 +22,10 @@
 
 - (void) facebookSetup
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"]  == nil) {
+        return;
+    }
     Facebook *facebook;
     facebook = [[Facebook alloc] initWithAppId:FACEBOOK_APP_ID andDelegate:self];
     [[AppContext getContext] setFacebook:facebook];
@@ -181,7 +185,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     self.window.rootViewController = navController;    
     //self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    [self facebookSetup];
+   [self facebookSetup];
     return YES;
 }
 
@@ -230,15 +234,16 @@ int last_time = 0;
    didUpdateToLocation:(CLLocation *)newLocation
           fromLocation:(CLLocation *)oldLocation { 
 
+#if 0
+    if (time(0) - last_time > 30) {
+        return;
+    }
+#endif
+
     [[AppContext getContext] updateLocation:
      [NSNumber numberWithFloat:newLocation.coordinate.latitude ] :
      [NSNumber numberWithFloat:newLocation.coordinate.longitude]];
     return;
-#if 1
-    if (time(0) - last_time > 120) {
-        return;
-    }
-#endif
 
     
 }
