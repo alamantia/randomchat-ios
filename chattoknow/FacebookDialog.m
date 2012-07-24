@@ -45,7 +45,7 @@
 
 - (IBAction) clickFacebook : (id) sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
     [[[AppContext getContext] vc] setupFacebook];
     return;
 }

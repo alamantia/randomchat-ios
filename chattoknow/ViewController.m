@@ -63,15 +63,24 @@
 
 - (void) cbFacebookLogin
 {
+    if (facebookDialog != nil) {
+        [facebookDialog dismissModalViewControllerAnimated:YES];
+    }
     [SVProgressHUD dismiss];
     [[AppContext getContext] sendListSessions];
     return;
 }
 
 - (void)   setupFacebook {
+    NSLog(@"Facebook SETUP");
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate facebookSetup];
     Facebook *facebook = [[AppContext getContext] facebook];
+    if (facebook == nil) {
+        facebook = [[Facebook alloc] initWithAppId:FACEBOOK_APP_ID andDelegate:appDelegate];
+        [[AppContext getContext] setFacebook:facebook];
+        [facebook extendAccessTokenIfNeeded];
+    }
+    facebook = [[AppContext getContext] facebook];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
         && [defaults objectForKey:@"FBExpirationDateKey"]) {
@@ -138,13 +147,12 @@
 {
     inSession = NO;
     isLaunching = NO;
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"]  == nil) {
-        NSLog(@"NO FACEBOOK YET");
+        facebookDialog  = [[FacebookDialog alloc] initWithNibName:@"FacebookDialog" bundle:nil];
+        [self presentModalViewController:facebookDialog animated:YES];
         return;
     }
-    
     [self setupFacebook];
     [SVProgressHUD showWithStatus:@"Loading"];
     [[AppContext getContext] sendListSessions];
@@ -163,6 +171,7 @@
 - (void)viewDidLoad
 {
     isShowing = NO;
+    facebookDialog = nil;
     [super viewDidLoad];
     [self.navigationItem setTitle:@"Chat2Know"];
     [[AppContext getContext] setVc:self];
